@@ -454,7 +454,7 @@ const PROJECTS = [
     },
     tech: ["JavaScript", "Supabase", "PWA", "VAPID", "IndexedDB"],
     shot: "https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/SplitEase",
-    link: "https://github.com/ibrheamkhalaf88-collab/SplitEase",
+    link: "https://ibrheamkhalaf88-collab.github.io/SplitEase/",
     github: "https://github.com/ibrheamkhalaf88-collab/SplitEase"
   },
   {
@@ -478,7 +478,7 @@ const PROJECTS = [
     },
     tech: ["HTML", "CSS", "JavaScript"],
     shot: "https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/sallaq-pharmacy",
-    link: "https://github.com/ibrheamkhalaf88-collab/sallaq-pharmacy",
+    link: "https://ibrheamkhalaf88-collab.github.io/sallaq-pharmacy/",
     github: "https://github.com/ibrheamkhalaf88-collab/sallaq-pharmacy"
   },
   {
@@ -615,11 +615,12 @@ function renderProjects(){
   const grid = document.getElementById("projectsGrid");
   grid.innerHTML = PROJECTS.map(p => `
     <article class="project-card ${p.featured?'featured':''} reveal">
-      <a class="project-shot" href="${p.link}" target="_blank" rel="noopener" aria-label="${p.name}">
+      ${p.link && !p.link.includes('github.com') ? `<a class="project-shot" href="${p.link}" target="_blank" rel="noopener" aria-label="${p.name}">` : `<div class="project-shot">`}
         <img src="${p.shot}" alt="${p.name}" loading="lazy" />
         <div class="overlay"></div>
         ${p.featured?'<span class="badge">★ Featured</span>':''}
-      </a>
+        ${p.link && p.link.includes('github.com') ? '<span class="badge" style="background:rgba(0,0,0,0.7);color:var(--text-3);border-color:var(--border-2)">No live demo</span>' : ''}
+      ${p.link && !p.link.includes('github.com') ? '</a>' : '</div>'}
       <div class="project-body">
         <div class="pname">${p.name}</div>
         <p class="pidea">${p.idea[currentLang]}</p>
