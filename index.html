@@ -240,7 +240,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
     </a>
     <nav class="topnav">
       <a href="#about" data-i18n="nav.about">About</a>
-      <a href="#skills" data-i18n="nav.skills">Skills</a>
+
       <a href="#projects" data-i18n="nav.projects">Projects</a>
       <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -308,22 +308,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
         </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SKILLS
-     ============================================================ -->
-<section id="skills">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow-sm" data-i18n="skills.eyebrow">What I know</div>
-        <h2 data-i18n="skills.title">My <span class="accent">skills</span></h2>
-      </div>
-      <p class="lede" data-i18n="skills.lede">A wide stack — I learn by shipping. Edit the SKILLS array in index.html to add more.</p>
-    </div>
-    <div class="skills-grid" id="skillsGrid"></div>
   </div>
 </section>
 
@@ -428,16 +412,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
 /* ============================================================
    DATA — edit these arrays to update content. No build step.
    ============================================================ */
-
-// --- Skills (grouped) ---
-const SKILLS = [
-  { group: { ar: "لغات برمجة", en: "Languages" }, items: ["JavaScript", "Python", "TypeScript", "HTML", "CSS", "SQL"] },
-  { group: { ar: "واجهات", en: "Frontend" }, items: ["Vanilla JS", "PWA", "Responsive", "RTL/Arabic", "Capacitor", "Tailwind"] },
-  { group: { ar: "خوادم / API", en: "Backend / API" }, items: ["FastAPI", "Node.js", "REST", "Supabase", "Firebase", "PostgreSQL"] },
-  { group: { ar: "بوتات / أتمتة", en: "Bots / Automation" }, items: ["Telegram Bot API", "RSS scraping", "Scheduled jobs", "WhatsApp API"] },
-  { group: { ar: "DevOps / أدوات", en: "DevOps / Tools" }, items: ["Git & GitHub", "GitHub Actions", "CI/CD", "Linux basics", "Vercel", "Render"] },
-  { group: { ar: "أخرى", en: "Other" }, items: ["UI/UX", "Android APK", "Push notifications", "i18n AR/EN"] },
-];
 
 // --- Projects (with idea + screenshot + link) ---
 // screenshot: GitHub OpenGraph image (1200x630). link: live URL or GitHub repo.
@@ -590,16 +564,6 @@ function applyI18n(){
   document.getElementById("langToggle").textContent = currentLang === "ar" ? "EN" : "AR";
 }
 
-function renderSkills(){
-  const grid = document.getElementById("skillsGrid");
-  grid.innerHTML = SKILLS.map(g => `
-    <div class="skill-group reveal">
-      <h4>${g.group[currentLang]}</h4>
-      <div class="skill-tags">${g.items.map(i=>`<span class="tag">${i}</span>`).join("")}</div>
-    </div>
-  `).join("");
-}
-
 function renderProjects(){
   const grid = document.getElementById("projectsGrid");
   grid.innerHTML = PROJECTS.map(p => `
@@ -666,12 +630,11 @@ function revealOnScroll(){
 
 document.getElementById("langToggle").addEventListener("click", ()=>{
   currentLang = currentLang === "ar" ? "en" : "ar";
-  applyI18n(); renderSkills(); renderProjects(); renderServices(); revealOnScroll();
+  applyI18n(); renderProjects(); renderServices(); revealOnScroll();
 });
 
 // init
 applyI18n();
-renderSkills();
 renderProjects();
 renderServices();
 revealOnScroll();
