@@ -53,16 +53,25 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ---------- Splash screen ---------- */
 #splash {
   position: fixed; inset: 0; z-index: 9999;
-  background: radial-gradient(800px 600px at 50% 40%, var(--accent-dim), transparent 70%), var(--bg);
+  background: var(--bg);
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 16px;
-  transition: opacity .6s ease, visibility .6s ease;
+  flex-direction: column; gap: 22px;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
 }
 #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-.splash-dot { width: 14px; height: 14px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 24px var(--accent-glow); animation: pulse 1.6s infinite; }
-.splash-title { font-size: clamp(26px, 5vw, 44px); font-weight: 900; letter-spacing: -0.02em; text-align: center; }
-.splash-title .accent { color: var(--accent); }
-.splash-sub { color: var(--text-3); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+.splash-line {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.splash-line.show { opacity: 1; transform: none; }
+.splash-hi { font-size: clamp(48px, 9vw, 96px); color: var(--accent); font-family: "Space Grotesk", monospace; font-weight: 700; }
+.splash-msg { font-size: clamp(20px, 4vw, 34px); color: var(--text); font-weight: 600; max-width: 80%; line-height: 1.4; }
+.splash-sub { color: var(--text-3); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: 0; transition: opacity 1.4s ease; }
+.splash-sub.show { opacity: 1; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
 
 /* ---------- Topbar ---------- */
@@ -215,8 +224,8 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
      SPLASH SCREEN
      ============================================================ -->
 <div id="splash">
-  <div class="splash-dot"></div>
-  <h1 class="splash-title"><span data-i18n="splash.welcome">أهلاً بك بصفحة</span> <span class="accent" data-i18n="splash.name">إبراهيم</span></h1>
+  <div class="splash-line splash-hi">hi</div>
+  <div class="splash-line splash-msg" data-i18n="splash.msg">بشرفنا انك تتعرف علينا</div>
   <div class="splash-sub" data-i18n="splash.sub">IBRAHIM KHALAF · PORTFOLIO</div>
 </div>
 
@@ -520,7 +529,7 @@ const SERVICES = [
 const I18N = {
   ar: {
     "nav.about":"نبذة","nav.skills":"المهارات","nav.projects":"المشاريع","nav.services":"العروض","nav.contact":"تواصل",
-    "splash.welcome":"أهلاً بك بصفحة","splash.name":"إبراهيم","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
+    "splash.msg":"بشرفنا انك تتعرف علينا","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"متاح للعمل Freelance","hero.hi":"مرحباً، أنا","hero.subtitle":"مطور مستقل · أتمتة · بوتات · ويب",
     "hero.bio":"أنا طالب هندسة من غزة أحب الحاسوب. أبني أشياء صغيرة تعمل بسرعة — بوتات، أتمتة، مواقع وتطبيقات — وأسلمها لتكون قيد التشغيل.",
     "hero.cta1":"شاهد أعمالي","hero.cta2":"ابدأ مشروعاً",
@@ -541,7 +550,7 @@ const I18N = {
   },
   en: {
     "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.services":"Services","nav.contact":"Contact",
-    "splash.welcome":"Welcome to","splash.name":"Ibrahim's page","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
+    "splash.msg":"We're honored you're getting to know us","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"Available for freelance work","hero.hi":"Hi, I'm","hero.subtitle":"Freelance developer · Automation · Bots · Web",
     "hero.bio":"I'm an engineering student from Gaza who loves computers. I build small, working things fast — bots, automations, sites and apps — and ship them so they actually run.",
     "hero.cta1":"See my work","hero.cta2":"Start a project",
@@ -631,7 +640,7 @@ function revealOnScroll(){
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 }
 
-// Splash screen
+// Splash screen — gentle sequential reveal: "hi" then "بشرفنا انك تتعرف علينا"
 (function splashInit(){
   const splash = document.getElementById("splash");
   const SPLASH_ONCE = true;
@@ -640,11 +649,18 @@ function revealOnScroll(){
     return;
   }
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hold = reduce ? 800 : 2000;
-  setTimeout(() => {
-    splash.classList.add("hide");
-    setTimeout(() => splash.remove(), 600);
-  }, hold);
+  const hi = splash.querySelector(".splash-hi");
+  const msg = splash.querySelector(".splash-msg");
+  const sub = splash.querySelector(".splash-sub");
+  if (reduce) {
+    hi.classList.add("show"); msg.classList.add("show"); sub.classList.add("show");
+    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>splash.remove(), 1200); }, 1400);
+  } else {
+    setTimeout(() => hi.classList.add("show"), 600);
+    setTimeout(() => msg.classList.add("show"), 2000);
+    setTimeout(() => sub.classList.add("show"), 3200);
+    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>splash.remove(), 1200); }, 5200);
+  }
   if (SPLASH_ONCE) sessionStorage.setItem("splashShown", "1");
 })();
 
