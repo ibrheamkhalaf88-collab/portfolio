@@ -241,6 +241,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
     <nav class="topnav">
       <a href="#about" data-i18n="nav.about">About</a>
 
+      <a href="#skills" data-i18n="nav.skills">Skills</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
       <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -308,6 +309,22 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow-sm" data-i18n="skills.eyebrow">What I know</div>
+        <h2 data-i18n="skills.title">My <span class="accent">skills</span></h2>
+      </div>
+      <p class="lede" data-i18n="skills.lede">A focused stack — I learn by shipping.</p>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
   </div>
 </section>
 
@@ -490,6 +507,14 @@ const PROJECTS = [
   }
 ];
 
+// --- Skills (grouped, focused) ---
+const SKILLS = [
+  { group: { ar: "لغات", en: "Languages" }, items: ["JavaScript", "Python", "HTML", "CSS", "SQL"] },
+  { group: { ar: "أطر / مكتبات", en: "Frameworks & Libs" }, items: ["FastAPI", "Supabase", "Firebase", "Capacitor"] },
+  { group: { ar: "DevOps / أدوات", en: "DevOps & Tools" }, items: ["Git & GitHub", "GitHub Actions", "Vercel", "Render"] },
+  { group: { ar: "مفاهيم", en: "Concepts" }, items: ["REST APIs", "PWA", "RTL/Arabic", "Bots", "Automation"] },
+];
+
 // --- Services ---
 const SERVICES = [
   { title: { ar: "بوت طلب Telegram", en: "Telegram Order Bot" }, price: "$49–99", desc: { ar: "قائمة، سلة، تأكيد، إشعار فوري، قاعدة طلبات. جاهز خلال 48 ساعة.", en: "Menu, cart, checkout, instant alerts, orders DB. Ready in 48h." } },
@@ -564,6 +589,16 @@ function applyI18n(){
   document.getElementById("langToggle").textContent = currentLang === "ar" ? "EN" : "AR";
 }
 
+function renderSkills(){
+  const grid = document.getElementById("skillsGrid");
+  grid.innerHTML = SKILLS.map(g => `
+    <div class="skill-group reveal">
+      <h4>${g.group[currentLang]}</h4>
+      <div class="skill-tags">${g.items.map(i=>`<span class="tag">${i}</span>`).join("")}</div>
+    </div>
+  `).join("");
+}
+
 function renderProjects(){
   const grid = document.getElementById("projectsGrid");
   grid.innerHTML = PROJECTS.map(p => `
@@ -630,11 +665,12 @@ function revealOnScroll(){
 
 document.getElementById("langToggle").addEventListener("click", ()=>{
   currentLang = currentLang === "ar" ? "en" : "ar";
-  applyI18n(); renderProjects(); renderServices(); revealOnScroll();
+  applyI18n(); renderSkills(); renderProjects(); renderServices(); revealOnScroll();
 });
 
 // init
 applyI18n();
+renderSkills();
 renderProjects();
 renderServices();
 revealOnScroll();
