@@ -383,10 +383,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
           <div><div class="label">GitHub</div><div class="val"><a href="https://github.com/ibrheamkhalaf88-collab" target="_blank" rel="noopener">ibrheamkhalaf88-collab</a></div></div>
         </div>
         <div class="contact-row">
-          <div class="ico">TG</div>
-          <div><div class="label">Telegram</div><div class="val"><a href="https://t.me/yourusername" target="_blank" rel="noopener">@yourusername</a></div></div>
-        </div>
-        <div class="contact-row">
           <div class="ico">IG</div>
           <div><div class="label">Instagram</div><div class="val"><a href="https://instagram.com/ibrheam.shady" target="_blank" rel="noopener">@ibrheam.shady</a></div></div>
         </div>
@@ -394,11 +390,23 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
           <div class="ico">WA</div>
           <div><div class="label">WhatsApp</div><div class="val"><a href="https://wa.me/972568802803" target="_blank" rel="noopener">+972 56 880 2803</a></div></div>
         </div>
+        <div class="contact-row">
+          <div class="ico">TG</div>
+          <div><div class="label">Telegram</div><div class="val"><a href="https://t.me/yourusername" target="_blank" rel="noopener">@yourusername</a></div></div>
+        </div>
       </div>
       <div class="about-card reveal">
-        <h3 data-i18n="contact.note">Note</h3>
-        <p data-i18n="contact.noteP">Replace the placeholder contact links (Telegram/WhatsApp) in index.html with your real handles before publishing.</p>
-        <p data-i18n="contact.noteP2">This site is a single file (index.html) + data arrays. Edit PROJECTS / SKILLS / SERVICES arrays to add or change content — no build step needed.</p>
+        <h3 data-i18n="contact.note">Contact form</h3>
+        <form id="contactForm" onsubmit="handleContact(event)" style="display:flex;flex-direction:column;gap:10px">
+          <input name="name" required placeholder="Your name" style="padding:12px;border-radius:8px;border:1px solid var(--border-2);background:var(--surface-2);color:var(--text);font-family:inherit" />
+          <input name="email" type="email" required placeholder="Your email" style="padding:12px;border-radius:8px;border:1px solid var(--border-2);background:var(--surface-2);color:var(--text);font-family:inherit" />
+          <textarea name="message" required rows="4" placeholder="Your message / service request" style="padding:12px;border-radius:8px;border:1px solid var(--border-2);background:var(--surface-2);color:var(--text);font-family:inherit;resize:vertical"></textarea>
+          <button type="submit" class="btn btn-primary" style="justify-content:center">Send message</button>
+          <div id="formStatus" style="font-size:13px;color:var(--text-3)"></div>
+        </form>
+        <div style="margin-top:14px">
+          <a class="btn btn-ghost" style="width:100%;justify-content:center" href="https://wa.me/972568802803?text=Hi%20Ibrahim%2C%20I%20want%20to%20request%20a%20service" target="_blank" rel="noopener">Request a service via WhatsApp</a>
+        </div>
       </div>
     </div>
   </div>
@@ -667,6 +675,33 @@ function renderServices(){
       <p>${s.desc[currentLang]}</p>
     </div>
   `).join("");
+}
+
+// --- Contact form -> WhatsApp notification (CallMeBot) ---
+// To enable: register your number at https://www.callmebot.com/blog/free-api-whatsapp-messages/
+// Send "I allow callmebot to send me messages" to +34 644 44 14 75 on WhatsApp, get your apikey, then set below.
+const CALLMEBOT_PHONE = "972568802803";
+const CALLMEBOT_APIKEY = "YOUR_APIKEY_HERE"; // <-- replace with your CallMeBot apikey
+
+async function handleContact(e){
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById("formStatus");
+  const data = Object.fromEntries(new FormData(form));
+  const text = encodeURIComponent(`New inquiry from portfolio\nName: ${data.name}\nEmail: ${data.email}\nMessage: ${data.message}`);
+  status.textContent = "Sending...";
+  try {
+    if (CALLMEBOT_APIKEY && CALLMEBOT_APIKEY !== "YOUR_APIKEY_HERE") {
+      await fetch(`https://api.callmebot.com/whatsapp.php?phone=${CALLMEBOT_PHONE}&text=${text}&apikey=${CALLMEBOT_APIKEY}`);
+    }
+    // Fallback: open WhatsApp with pre-filled message to admin
+    const waText = encodeURIComponent(`Hi Ibrahim, I'm ${data.name} (${data.email}). ${data.message}`);
+    window.open(`https://wa.me/${CALLMEBOT_PHONE}?text=${waText}`, "_blank");
+    status.textContent = "Sent! I'll reply soon. (WhatsApp opened)";
+    form.reset();
+  } catch (err) {
+    status.textContent = "Could not send automatically. Please use WhatsApp button below.";
+  }
 }
 
 function revealOnScroll(){
