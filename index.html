@@ -339,22 +339,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
 </section>
 
 <!-- ============================================================
-     VIDEOS
-     ============================================================ -->
-<section id="videos">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow-sm" data-i18n="videos.eyebrow">Media</div>
-        <h2 data-i18n="videos.title">My <span class="accent">videos</span></h2>
-      </div>
-      <p class="lede" data-i18n="videos.lede">Ads, promos and demos I produced. Click to play.</p>
-    </div>
-    <div class="videos-grid" id="videosGrid"></div>
-  </div>
-</section>
-
-<!-- ============================================================
      PROJECTS
      ============================================================ -->
 <section id="projects">
@@ -367,6 +351,22 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
       <p class="lede" data-i18n="projects.lede">Real, shipped products. Click a screenshot to open the project.</p>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEOS
+     ============================================================ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow-sm" data-i18n="videos.eyebrow">Media</div>
+        <h2 data-i18n="videos.title">My <span class="accent">videos</span></h2>
+      </div>
+      <p class="lede" data-i18n="videos.lede">Ads, promos and demos I produced. Click to play.</p>
+    </div>
+    <div class="videos-grid" id="videosGrid"></div>
   </div>
 </section>
 
@@ -683,8 +683,8 @@ function renderVideos(){
   const grid = document.getElementById("videosGrid");
   grid.innerHTML = VIDEOS.map(v => `
     <div class="video-card reveal">
-      <video controls preload="metadata" poster="${v.poster}">
-        <source src="${v.src}" type="video/mp4" />
+      <video controls preload="metadata">
+        <source src="${v.src}#t=0.5" type="video/mp4" />
       </video>
       <div class="vbody">
         <div class="vtitle">${v.title[currentLang]}</div>
