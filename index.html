@@ -72,6 +72,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .splash-msg { font-size: clamp(20px, 4vw, 34px); color: var(--text); font-weight: 600; max-width: 80%; line-height: 1.4; }
 .splash-sub { color: var(--text-3); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: 0; transition: opacity 1.4s ease; }
 .splash-sub.show { opacity: 1; }
+.splash-guide { width: clamp(140px, 22vw, 220px); height: auto; opacity: 0; transform: translateY(20px) scale(0.9); transition: opacity 1.2s ease, transform 1.2s ease; filter: drop-shadow(0 12px 32px rgba(34,211,238,0.3)); }
+.splash-guide.show { opacity: 1; transform: none; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
 
 /* ---------- Topbar ---------- */
@@ -198,6 +200,15 @@ section { padding: 80px 0; }
 .contact-row .val { font-weight: 600; color: var(--text); }
 .contact-row a:hover .val { color: var(--accent); }
 
+/* ---------- Mascot (guide waving to visitors) ---------- */
+.mascot { position: fixed; bottom: 20px; inset-inline-end: 20px; z-index: 60; width: 150px; opacity: 0; transform: translateY(20px) scale(0.9); transition: opacity .6s ease, transform .6s ease; pointer-events: none; }
+.mascot.show { opacity: 1; transform: none; pointer-events: auto; }
+.mascot img { width: 100%; height: auto; filter: drop-shadow(0 8px 24px rgba(34,211,238,0.25)); animation: mascotBob 3s ease-in-out infinite; }
+.mascot .mascot-close { position: absolute; top: 4px; inset-inline-end: 4px; width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,0.6); color: var(--text); font-size: 14px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border-2); }
+.mascot .mascot-close:hover { background: var(--accent); color: #000; }
+@keyframes mascotBob { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-8px) rotate(2deg)} }
+@media (max-width: 640px) { .mascot { width: 110px; bottom: 12px; inset-inline-end: 12px; } }
+
 /* ---------- Footer ---------- */
 footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text-3); font-size: 14px; }
 .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
@@ -233,6 +244,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
      SPLASH SCREEN
      ============================================================ -->
 <div id="splash">
+  <img src="videos/guide-1.png" alt="Guide" class="splash-guide" />
   <div class="splash-line splash-hi">hi</div>
   <div class="splash-line splash-msg" data-i18n="splash.msg">بشرفنا انك تتعرف علينا</div>
   <div class="splash-sub" data-i18n="splash.sub">IBRAHIM KHALAF · PORTFOLIO</div>
@@ -458,6 +470,12 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
     <div data-i18n="footer.built">Built with HTML/CSS/JS · Hosted on GitHub Pages</div>
   </div>
 </footer>
+
+<!-- Mascot (guide waving to visitors) -->
+<div id="mascot" class="mascot">
+  <img src="videos/guide-1.png" alt="Guide" />
+  <button class="mascot-close" aria-label="Close" onclick="document.getElementById('mascot').classList.remove('show'); setTimeout(()=>document.getElementById('mascot').remove(),400)">×</button>
+</div>
 
 <script>
 /* ============================================================
@@ -768,20 +786,24 @@ function revealOnScroll(){
   const SPLASH_ONCE = true;
   if (SPLASH_ONCE && sessionStorage.getItem("splashShown")) {
     splash.remove();
+    const m = document.getElementById("mascot");
+    if (m) m.classList.add("show");
     return;
   }
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const guide = splash.querySelector(".splash-guide");
   const hi = splash.querySelector(".splash-hi");
   const msg = splash.querySelector(".splash-msg");
   const sub = splash.querySelector(".splash-sub");
   if (reduce) {
-    hi.classList.add("show"); msg.classList.add("show"); sub.classList.add("show");
-    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>splash.remove(), 1200); }, 1400);
+    guide.classList.add("show"); hi.classList.add("show"); msg.classList.add("show"); sub.classList.add("show");
+    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>{ splash.remove(); document.getElementById("mascot").classList.add("show"); }, 1200); }, 1400);
   } else {
-    setTimeout(() => hi.classList.add("show"), 600);
-    setTimeout(() => msg.classList.add("show"), 2000);
-    setTimeout(() => sub.classList.add("show"), 3200);
-    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>splash.remove(), 1200); }, 5200);
+    setTimeout(() => guide.classList.add("show"), 300);
+    setTimeout(() => hi.classList.add("show"), 900);
+    setTimeout(() => msg.classList.add("show"), 2200);
+    setTimeout(() => sub.classList.add("show"), 3400);
+    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>{ splash.remove(); document.getElementById("mascot").classList.add("show"); }, 1200); }, 5600);
   }
   if (SPLASH_ONCE) sessionStorage.setItem("splashShown", "1");
 })();
