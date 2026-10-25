@@ -171,6 +171,15 @@ section { padding: 80px 0; }
 .project-body .plinks a:hover { color: var(--accent); border-color: var(--accent); }
 .project-body .plinks a.primary { background: var(--accent-dim); color: var(--accent); border-color: var(--accent); }
 
+/* ---------- Videos ---------- */
+.videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.video-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: transform .25s, border-color .25s; }
+.video-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.video-card video { width: 100%; aspect-ratio: 16/9; background: #000; display: block; }
+.video-card .vbody { padding: 14px 18px; }
+.video-card .vtitle { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.video-card .vdesc { color: var(--text-2); font-size: 13px; }
+
 /* ---------- Services ---------- */
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
 .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color .2s, transform .2s; }
@@ -242,6 +251,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
       <a href="#about" data-i18n="nav.about">About</a>
 
       <a href="#skills" data-i18n="nav.skills">Skills</a>
+      <a href="#videos" data-i18n="nav.videos">Videos</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
       <a href="#services" data-i18n="nav.services">Services</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -325,6 +335,22 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
       <p class="lede" data-i18n="skills.lede">A focused stack — I learn by shipping.</p>
     </div>
     <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEOS
+     ============================================================ -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow-sm" data-i18n="videos.eyebrow">Media</div>
+        <h2 data-i18n="videos.title">My <span class="accent">videos</span></h2>
+      </div>
+      <p class="lede" data-i18n="videos.lede">Ads, promos and demos I produced. Click to play.</p>
+    </div>
+    <div class="videos-grid" id="videosGrid"></div>
   </div>
 </section>
 
@@ -551,6 +577,14 @@ const PROJECTS = [
   }
 ];
 
+// --- Videos ---
+const VIDEOS = [
+  { title: { ar: "إعلان Taqat (برمجة)", en: "Taqat programming ad" }, desc: { ar: "إعلان ترويجي لمنصة Taqat.", en: "Promo ad for Taqat platform." }, src: "videos/taqat-programming-ad-v2.mp4", poster: "videos/poster.png" },
+  { title: { ar: "إعلان فريق Jamrah", en: "Jamrah team services ad" }, desc: { ar: "إعلان خدمات فريق Jamrah.", en: "Services ad for Jamrah team." }, src: "videos/jamra-team-services-ad.mp4", poster: "videos/poster.png" },
+  { title: { ar: "فيديو إبداعي (Kling)", en: "Creative video (Kling)" }, desc: { ar: "فيديو إبداعي من إنتاج AI.", en: "AI-generated creative video." }, src: "videos/create-6.mp4", poster: "videos/poster.png" },
+  { title: { ar: "فيديو WhatsApp", en: "WhatsApp video" }, desc: { ar: "فيديو من WhatsApp.", en: "Video from WhatsApp." }, src: "videos/whatsapp-2026-09-26.mp4", poster: "videos/poster.png" },
+];
+
 // --- Skills (grouped, focused) ---
 const SKILLS = [
   { group: { ar: "لغات", en: "Languages" }, items: ["JavaScript", "Python", "HTML", "CSS", "SQL"] },
@@ -571,7 +605,7 @@ const SERVICES = [
 // --- i18n ---
 const I18N = {
   ar: {
-    "nav.about":"نبذة","nav.skills":"المهارات","nav.projects":"المشاريع","nav.services":"العروض","nav.contact":"تواصل",
+    "nav.about":"نبذة","nav.skills":"المهارات","nav.projects":"المشاريع","nav.services":"العروض","nav.videos":"فيديوهات","nav.contact":"تواصل",
     "splash.msg":"بشرفنا انك تتعرف علينا","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"متاح للعمل Freelance","hero.hi":"مرحباً، أنا","hero.subtitle":"مطور مستقل · أتمتة · بوتات · ويب",
     "hero.bio":"أنا طالب هندسة من غزة أحب الحاسوب. أبني أشياء صغيرة تعمل بسرعة — بوتات، أتمتة، مواقع وتطبيقات — وأسلمها لتكون قيد التشغيل.",
@@ -585,6 +619,7 @@ const I18N = {
     "skills.eyebrow":"ما أعرفه","skills.title":"مهاراتي","skills.lede":"مجموعة واسعة — أتعلم بال shipping. عدّل مصفوفة SKILLS في index.html لإضافة المزيد.",
     "projects.eyebrow":"الأعمال","projects.title":"مشاريع مختارة","projects.lede":"منتجات حقيقية مُسلَّمة. انقر على صورة لفتح المشروع.",
     "services.eyebrow":"Freelance","services.title":"عروض جاهزة","services.lede":"سعر ثابت، تسليم سريع. الاستشارة الأولى مجانية.",
+    "videos.eyebrow":"وسائط","videos.title":"فيديوهاتي","videos.lede":"إعلانات وعروض وعروض توضيحية. انقر للتشغيل.",
     "contact.eyebrow":"تواصل","contact.title":"لنعمل معاً","contact.lede":"أرسل لي رسالة قصيرة — «أريد بوتاً للطلبات» يكفي.",
     "contact.note":"ملاحظة","contact.noteP":"استبدل روابط التواصل (Telegram/WhatsApp) في index.html بحساباتك الحقيقية قبل النشر.",
     "contact.noteP2":"هذا الموقع ملف واحد (index.html) + مصفوفات بيانات. عدّل PROJECTS / SKILLS / SERVICES لإضافة أو تغيير المحتوى — لا حاجة لبناء.",
@@ -592,7 +627,7 @@ const I18N = {
     "footer.built":"بُني بـ HTML/CSS/JS · مستضاف على GitHub Pages"
   },
   en: {
-    "nav.about":"About","nav.skills":"Skills","nav.projects":"Projects","nav.services":"Services","nav.contact":"Contact",
+    "nav.about":"About","nav.skills":"Skills","nav.videos":"Videos","nav.projects":"Projects","nav.services":"Services","nav.contact":"Contact",
     "splash.msg":"We're honored you're getting to know us","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"Available for freelance work","hero.hi":"Hi, I'm","hero.subtitle":"Freelance developer · Automation · Bots · Web",
     "hero.bio":"I'm an engineering student from Gaza who loves computers. I build small, working things fast — bots, automations, sites and apps — and ship them so they actually run.",
@@ -606,6 +641,7 @@ const I18N = {
     "skills.eyebrow":"What I know","skills.title":"My skills","skills.lede":"A wide stack — I learn by shipping. Edit the SKILLS array in index.html to add more.",
     "projects.eyebrow":"Work","projects.title":"Selected projects","projects.lede":"Real, shipped products. Click a screenshot to open the project.",
     "services.eyebrow":"Freelance","services.title":"Ready-made offers","services.lede":"Fixed price, fast delivery. First consult is free.",
+    "videos.eyebrow":"Media","videos.title":"My videos","videos.lede":"Ads, promos and demos I produced. Click to play.",
     "contact.eyebrow":"Get in touch","contact.title":"Let's work together","contact.lede":"Send me a short message — \"I want a bot for orders\" is enough.",
     "contact.note":"Note","contact.noteP":"Replace the placeholder contact links (Telegram/WhatsApp) in index.html with your real handles before publishing.",
     "contact.noteP2":"This site is a single file (index.html) + data arrays. Edit PROJECTS / SKILLS / SERVICES arrays to add or change content — no build step needed.",
@@ -639,6 +675,21 @@ function renderSkills(){
     <div class="skill-group reveal">
       <h4>${g.group[currentLang]}</h4>
       <div class="skill-tags">${g.items.map(i=>`<span class="tag">${i}</span>`).join("")}</div>
+    </div>
+  `).join("");
+}
+
+function renderVideos(){
+  const grid = document.getElementById("videosGrid");
+  grid.innerHTML = VIDEOS.map(v => `
+    <div class="video-card reveal">
+      <video controls preload="metadata" poster="${v.poster}">
+        <source src="${v.src}" type="video/mp4" />
+      </video>
+      <div class="vbody">
+        <div class="vtitle">${v.title[currentLang]}</div>
+        <div class="vdesc">${v.desc[currentLang]}</div>
+      </div>
     </div>
   `).join("");
 }
@@ -737,12 +788,13 @@ function revealOnScroll(){
 
 document.getElementById("langToggle").addEventListener("click", ()=>{
   currentLang = currentLang === "ar" ? "en" : "ar";
-  applyI18n(); renderSkills(); renderProjects(); renderServices(); revealOnScroll();
+  applyI18n(); renderSkills(); renderVideos(); renderProjects(); renderServices(); revealOnScroll();
 });
 
 // init
 applyI18n();
 renderSkills();
+renderVideos();
 renderProjects();
 renderServices();
 revealOnScroll();
