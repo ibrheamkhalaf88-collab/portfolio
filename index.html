@@ -161,12 +161,6 @@ section { padding: 120px 0; }
 .section-head .lede { color: var(--text-2); max-width: 480px; font-size: 16px; }
 .eyebrow-sm { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
 
-/* ---------- Highlights ---------- */
-.highlights-list { display: flex; flex-direction: column; gap: 12px; }
-.highlight-line { font-size: clamp(18px, 3vw, 34px); font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; padding: 14px 18px; border-inline-start: 4px solid var(--accent); background: linear-gradient(90deg, var(--accent-dim), transparent); border-radius: 0 var(--radius) var(--radius) 0; transition: transform .2s, border-color .2s; }
-.highlight-line:hover { transform: translateX(6px); }
-.highlight-line .num { color: var(--accent); font-family: "Plus Jakarta Sans", sans-serif; font-size: 0.6em; margin-inline-end: 12px; opacity: 0.7; }
-
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .about-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; transition: border-color .2s; }
@@ -296,7 +290,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
     <nav class="topnav">
       <a href="#about" data-i18n="nav.about">About</a>
 
-      <a href="#highlights" data-i18n="nav.highlights">Highlights</a>
       <a href="#skills" data-i18n="nav.skills">Skills</a>
       <a href="#videos" data-i18n="nav.videos">Videos</a>
       <a href="#projects" data-i18n="nav.projects">Projects</a>
@@ -332,21 +325,6 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
       <div class="stat"><span class="k" data-i18n="hero.stat4k">Focus</span><span class="v" data-i18n="hero.stat4v">Computers & code</span></div>
       <div class="stat"><span class="k" data-i18n="hero.stat5k">Status</span><span class="v" data-i18n="hero.stat5v">Open to work</span></div>
     </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     HIGHLIGHTS (5 big lines)
-     ============================================================ -->
-<section id="highlights">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2 data-i18n="highlights.title">Key <span class="accent">points</span></h2>
-      </div>
-      <p class="lede" data-i18n="highlights.lede">Five big lines — edit the HIGHLIGHTS array in index.html.</p>
-    </div>
-    <div class="highlights-list" id="highlightsList"></div>
   </div>
 </section>
 
@@ -647,16 +625,6 @@ const VIDEOS = [
   { title: { ar: "فيديو إبداعي (Kling)", en: "Creative video (Kling)" }, desc: { ar: "فيديو إبداعي من إنتاج AI.", en: "AI-generated creative video." }, src: "videos/create-6.mp4", poster: "videos/poster.png" },
   { title: { ar: "فيديو WhatsApp", en: "WhatsApp video" }, desc: { ar: "فيديو من WhatsApp.", en: "Video from WhatsApp." }, src: "videos/whatsapp-2026-09-26.mp4", poster: "videos/poster.png" },
 ];
-
-// --- Highlights (5 big lines — edit these) ---
-const HIGHLIGHTS = [
-  "أنا إبراهيم خلف — مهتم بالبرمجة وخدمات الأمان (security services).",
-  "المهارات التي أمتلكها والشهادات التي حصلت عليها.",
-  "ما أنجزته خلال الدورة والأشياء التي عملتها.",
-  "أهم معيار عندي هو معيار الجودة في العمل.",
-  "أصحابي.",
-];
-
 // --- Skills (grouped, focused) ---
 const SKILLS = [
   { group: { ar: "لغات", en: "Languages" }, items: ["JavaScript", "Python", "HTML", "CSS", "SQL"] },
@@ -677,7 +645,7 @@ const SERVICES = [
 // --- i18n ---
 const I18N = {
   ar: {
-    "nav.about":"نبذة","nav.skills":"المهارات","nav.projects":"المشاريع","nav.services":"العروض","nav.highlights":"نقاط","nav.videos":"فيديوهات","nav.contact":"تواصل",
+    "nav.about":"نبذة","nav.skills":"المهارات","nav.projects":"المشاريع","nav.services":"العروض","nav.videos":"فيديوهات","nav.contact":"تواصل",
     "splash.msg":"بشرفنا انك تتعرف علينا","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"متاح للعمل Freelance","hero.hi":"مرحباً، أنا","hero.subtitle":"مطور مستقل · أتمتة · بوتات · ويب",
     "hero.bio":"أنا طالب هندسة من غزة أحب الحاسوب. أبني أشياء صغيرة تعمل بسرعة — بوتات، أتمتة، مواقع وتطبيقات — وأسلمها لتكون قيد التشغيل.",
@@ -689,7 +657,7 @@ const I18N = {
     "about.facts":"حقائق سريعة","about.f1":"الاسم: إبراهيم خلف (Ibrheam)","about.f2":"من: غزة، فلسطين","about.f3":"العمر: 20","about.f4":"الدراسة: هندسة، سنة ثانية","about.f5":"الشغف: حاسوب وبرمجة","about.f6":"العمل: مطور مستقل (عن بعد)","about.f7":"اللغات: عربية (أصلية)، إنجليزية",
     "about.f8":"فريق: أقود فريقاً صغيراً للمشاريع الكبيرة (backend + server)",
     "skills.eyebrow":"ما أعرفه","skills.title":"مهاراتي","skills.lede":"مجموعة واسعة — أتعلم بال shipping. عدّل مصفوفة SKILLS في index.html لإضافة المزيد.",
-    "highlights.eyebrow":"نقاط","highlights.title":"نقاط بارزة","highlights.lede":"خمسة أسطر كبيرة — عدّل مصفوفة HIGHLIGHTS في index.html.",
+    
     "projects.eyebrow":"الأعمال","projects.title":"مشاريع مختارة","projects.lede":"منتجات حقيقية مُسلَّمة. انقر على صورة لفتح المشروع.",
     "services.eyebrow":"Freelance","services.title":"عروض جاهزة","services.lede":"سعر ثابت، تسليم سريع. الاستشارة الأولى مجانية.",
     "videos.eyebrow":"وسائط","videos.title":"فيديوهاتي","videos.lede":"إعلانات وعروض وعروض توضيحية. انقر للتشغيل.",
@@ -700,7 +668,7 @@ const I18N = {
     "footer.built":"بُني بـ HTML/CSS/JS · مستضاف على GitHub Pages"
   },
   en: {
-    "nav.about":"About","nav.highlights":"Highlights","nav.skills":"Skills","nav.videos":"Videos","nav.projects":"Projects","nav.services":"Services","nav.contact":"Contact",
+    "nav.about":"About","nav.skills":"Skills","nav.videos":"Videos","nav.projects":"Projects","nav.services":"Services","nav.contact":"Contact",
     "splash.msg":"We're honored you're getting to know us","splash.sub":"IBRAHIM KHALAF · PORTFOLIO",
     "hero.eyebrow":"Available for freelance work","hero.hi":"Hi, I'm","hero.subtitle":"Freelance developer · Automation · Bots · Web",
     "hero.bio":"I'm an engineering student from Gaza who loves computers. I build small, working things fast — bots, automations, sites and apps — and ship them so they actually run.",
@@ -712,7 +680,7 @@ const I18N = {
     "about.facts":"Quick facts","about.f1":"Name: Ibrahim Khalaf (Ibrheam)","about.f2":"From: Gaza, Palestine","about.f3":"Age: 20","about.f4":"Study: Engineering, 2nd year","about.f5":"Passion: computers & programming","about.f6":"Work: freelance developer (remote)","about.f7":"Languages: Arabic (native), English",
     "about.f8":"Team: I lead a small team for larger projects (backend + server)",
     "skills.eyebrow":"What I know","skills.title":"My skills","skills.lede":"A wide stack — I learn by shipping. Edit the SKILLS array in index.html to add more.",
-    "highlights.eyebrow":"Highlights","highlights.title":"Key points","highlights.lede":"Five big lines — edit the HIGHLIGHTS array in index.html.",
+    
     "projects.eyebrow":"Work","projects.title":"Selected projects","projects.lede":"Real, shipped products. Click a screenshot to open the project.",
     "services.eyebrow":"Freelance","services.title":"Ready-made offers","services.lede":"Fixed price, fast delivery. First consult is free.",
     "videos.eyebrow":"Media","videos.title":"My videos","videos.lede":"Ads, promos and demos I produced. Click to play.",
@@ -750,13 +718,6 @@ function renderSkills(){
       <h4>${g.group[currentLang]}</h4>
       <div class="skill-tags">${g.items.map(i=>`<span class="tag">${i}</span>`).join("")}</div>
     </div>
-  `).join("");
-}
-
-function renderHighlights(){
-  const list = document.getElementById("highlightsList");
-  list.innerHTML = HIGHLIGHTS.map((line, i) => `
-    <div class="highlight-line reveal"><span class="num">0${i+1}</span>${line}</div>
   `).join("");
 }
 
@@ -905,7 +866,6 @@ typeLoop();
 
 // init
 applyI18n();
-renderHighlights();
 renderSkills();
 renderVideos();
 renderProjects();
