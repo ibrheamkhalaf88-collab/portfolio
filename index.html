@@ -8,7 +8,9 @@
 <meta name="description" content="Ibrahim Khalaf (Ibrheam) — freelance developer from Gaza. Engineering student, computer enthusiast. Projects: GymOS, SplitEase, Telegram bots, pharmacy sites." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <style>
 /* ============================================================
    PORTFOLIO — Ibrahim Khalaf (Ibrheam)
@@ -40,12 +42,12 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Tajawal", "Manrope", system-ui, sans-serif;
+  font-family: "Tajawal", "Plus Jakarta Sans", system-ui, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-body.en { font-family: "Manrope", "Tajawal", system-ui, sans-serif; }
+body.en { font-family: "Plus Jakarta Sans", "Tajawal", system-ui, sans-serif; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
@@ -70,7 +72,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.02em;
 }
 .splash-line.show { opacity: 1; transform: none; }
-.splash-hi { font-size: clamp(48px, 9vw, 96px); color: var(--accent); font-family: "Manrope", sans-serif; font-weight: 700; }
+.splash-hi { font-size: clamp(48px, 9vw, 96px); color: var(--accent); font-family: "Plus Jakarta Sans", sans-serif; font-weight: 700; }
 .splash-msg { font-size: clamp(20px, 4vw, 34px); color: var(--text); font-weight: 600; max-width: 80%; line-height: 1.4; }
 .splash-sub { color: var(--text-3); font-size: 12px; letter-spacing: .18em; text-transform: uppercase; opacity: 0; transition: opacity 1.4s ease; }
 .splash-sub.show { opacity: 1; }
@@ -135,7 +137,7 @@ nav.topnav a:hover { color: var(--text); background: var(--surface); }
 .hero-card .stat { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--border); }
 .hero-card .stat:last-child { border-bottom: none; }
 .hero-card .stat .k { color: var(--text-3); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
-.hero-card .stat .v { font-weight: 700; color: var(--accent); font-family: "Manrope", sans-serif; }
+.hero-card .stat .v { font-weight: 700; color: var(--accent); font-family: "Plus Jakarta Sans", sans-serif; }
 
 /* ---------- Typing (live thing) ---------- */
 .hero-typing { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 24px; min-height: 28px; }
@@ -154,7 +156,7 @@ section { padding: 120px 0; }
 .highlights-list { display: flex; flex-direction: column; gap: 12px; }
 .highlight-line { font-size: clamp(18px, 3vw, 34px); font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; padding: 14px 18px; border-inline-start: 4px solid var(--accent); background: linear-gradient(90deg, var(--accent-dim), transparent); border-radius: 0 var(--radius) var(--radius) 0; transition: transform .2s, border-color .2s; }
 .highlight-line:hover { transform: translateX(6px); }
-.highlight-line .num { color: var(--accent); font-family: "Manrope", sans-serif; font-size: 0.6em; margin-inline-end: 12px; opacity: 0.7; }
+.highlight-line .num { color: var(--accent); font-family: "Plus Jakarta Sans", sans-serif; font-size: 0.6em; margin-inline-end: 12px; opacity: 0.7; }
 
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -190,7 +192,7 @@ section { padding: 120px 0; }
 .project-body .pname { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; }
 .project-body .pidea { color: var(--text-2); font-size: 14px; line-height: 1.6; }
 .project-body .ptech { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-.project-body .ptech span { font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); font-weight: 600; font-family: "Manrope", sans-serif; }
+.project-body .ptech span { font-size: 11px; padding: 4px 8px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); font-weight: 600; font-family: "Plus Jakarta Sans", sans-serif; }
 .project-body .plinks { display: flex; gap: 8px; margin-top: 8px; }
 .project-body .plinks a { font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border-2); color: var(--text-2); transition: color .2s, border-color .2s; }
 .project-body .plinks a:hover { color: var(--accent); border-color: var(--accent); }
@@ -209,7 +211,7 @@ section { padding: 120px 0; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
 .service-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: border-color .2s, transform .2s; }
 .service-card:hover { border-color: var(--accent); transform: translateY(-3px); }
-.service-card .price { color: var(--accent); font-weight: 800; font-size: 22px; font-family: "Manrope", sans-serif; margin: 8px 0; }
+.service-card .price { color: var(--accent); font-weight: 800; font-size: 22px; font-family: "Plus Jakarta Sans", sans-serif; margin: 8px 0; }
 .service-card h4 { font-size: 17px; font-weight: 700; }
 .service-card p { color: var(--text-2); font-size: 14px; margin-top: 8px; }
 
@@ -218,7 +220,7 @@ section { padding: 120px 0; }
 .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
 .contact-row { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
 .contact-row:last-child { border-bottom: none; }
-.contact-row .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-dim); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-family: "Manrope", sans-serif; }
+.contact-row .ico { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-dim); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; font-family: "Plus Jakarta Sans", sans-serif; }
 .contact-row .label { font-size: 12px; color: var(--text-3); text-transform: uppercase; letter-spacing: .08em; }
 .contact-row .val { font-weight: 600; color: var(--text); }
 .contact-row a:hover .val { color: var(--accent); }
@@ -900,6 +902,28 @@ renderVideos();
 renderProjects();
 renderServices();
 revealOnScroll();
+
+// GSAP scroll animations (premium)
+if (typeof gsap !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+  // Staggered section reveals
+  gsap.utils.toArray('section').forEach((sec) => {
+    gsap.from(sec, {
+      opacity: 0, y: 60, duration: 1.2, ease: 'power3.out',
+      scrollTrigger: { trigger: sec, start: 'top 85%', once: true }
+    });
+  });
+  // Hero parallax
+  gsap.to('.hero::before', {
+    yPercent: 30, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+  });
+  // Project cards stagger
+  gsap.from('.project-card', {
+    opacity: 0, y: 40, stagger: 0.12, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: '#projects', start: 'top 80%', once: true }
+  });
+}
 </script>
 
 </body>
