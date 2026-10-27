@@ -103,10 +103,19 @@ nav.topnav a:hover { color: var(--text); background: var(--surface); }
 .hero { padding: 96px 0 72px; position: relative; overflow: hidden; }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background: var(--accent-dim);
-  opacity: 0.06;
+  background: url("https://picsum.photos/id/266/1600/1000") center/cover no-repeat;
+  opacity: 0.12;
+  filter: brightness(0.7) saturate(0.6) blur(2px);
   pointer-events: none;
 }
+.hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.7);
+  pointer-events: none;
+}
+#about { position: relative; }
+#about::before { content: ""; position: absolute; inset: 0; background: url("https://picsum.photos/id/194/1600/1000") center/cover no-repeat; opacity: 0.08; filter: brightness(0.6) saturate(0.5); pointer-events: none; z-index: 0; }
+#about .container { position: relative; z-index: 1; }
 .hero-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
 .hero-status { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--text-2); margin-bottom: 24px; }
 .hero-status .pulse { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
@@ -127,6 +136,11 @@ nav.topnav a:hover { color: var(--text); background: var(--surface); }
 .hero-card .stat:last-child { border-bottom: none; }
 .hero-card .stat .k { color: var(--text-3); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
 .hero-card .stat .v { font-weight: 700; color: var(--accent); font-family: "Manrope", sans-serif; }
+
+/* ---------- Typing (live thing) ---------- */
+.hero-typing { font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 24px; min-height: 28px; }
+.typing-cursor { animation: blink 1s step-end infinite; margin-inline-start: 2px; }
+@keyframes blink { 0%,50%{opacity:1} 51%,100%{opacity:0} }
 
 /* ---------- Section ---------- */
 section { padding: 120px 0; }
@@ -293,6 +307,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
       <h1><span data-i18n="hero.hi">Hi, I'm</span> <span class="accent" id="hero-name">Ibrahim Khalaf</span></h1>
       <div class="hero-status"><span class="pulse"></span><span data-i18n="hero.eyebrow">Available for freelance work</span></div>
       <div class="subtitle" data-i18n="hero.subtitle">Freelance developer · Automation · Bots · Web</div>
+      <div class="hero-typing"><span id="typingText"></span><span class="typing-cursor">|</span></div>
       <p class="bio" data-i18n="hero.bio">I'm an engineering student from Gaza who loves computers. I build small, working things fast — bots, automations, sites and apps — and ship them so they actually run.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#projects" data-i18n="hero.cta1">See my work</a>
@@ -851,6 +866,31 @@ document.getElementById("langToggle").addEventListener("click", ()=>{
   currentLang = currentLang === "ar" ? "en" : "ar";
   applyI18n(); renderSkills(); renderVideos(); renderProjects(); renderServices(); revealOnScroll();
 });
+
+// Typing effect (live thing)
+const TYPING_PHRASES = [
+  "Building bots that work.",
+  "Automating the boring stuff.",
+  "Shipping small, working things.",
+  "Available for freelance work.",
+];
+let typingIndex = 0, typingChar = 0, typingDeleting = false;
+function typeLoop(){
+  const el = document.getElementById("typingText");
+  if (!el) return;
+  const phrase = TYPING_PHRASES[typingIndex];
+  if (!typingDeleting) {
+    el.textContent = phrase.substring(0, typingChar + 1);
+    typingChar++;
+    if (typingChar === phrase.length) { typingDeleting = true; setTimeout(typeLoop, 1800); return; }
+  } else {
+    el.textContent = phrase.substring(0, typingChar - 1);
+    typingChar--;
+    if (typingChar === 0) { typingDeleting = false; typingIndex = (typingIndex + 1) % TYPING_PHRASES.length; }
+  }
+  setTimeout(typeLoop, typingDeleting ? 40 : 80);
+}
+typeLoop();
 
 // init
 applyI18n();
