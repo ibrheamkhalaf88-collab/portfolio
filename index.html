@@ -102,17 +102,18 @@ nav.topnav a:hover { color: var(--text); background: var(--surface); }
 .hamburger { display: none; }
 
 /* ---------- Hero ---------- */
-.hero { padding: 96px 0 72px; position: relative; overflow: hidden; }
-.hero::before {
-  content: ""; position: absolute; inset: 0;
+.hero { padding: 120px 0 80px; position: relative; overflow: hidden; min-height: 90vh; display: flex; align-items: center; }
+.hero-bg {
+  position: absolute; inset: 0;
   background: url("https://picsum.photos/id/266/1600/1000") center/cover no-repeat;
-  opacity: 0.12;
-  filter: brightness(0.7) saturate(0.6) blur(2px);
+  opacity: 0.15;
+  filter: brightness(0.6) saturate(0.5) blur(1px);
   pointer-events: none;
+  will-change: transform;
 }
 .hero::after {
   content: ""; position: absolute; inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.75);
   pointer-events: none;
 }
 #about { position: relative; }
@@ -268,15 +269,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
 </head>
 <body>
 
-<!-- ============================================================
-     SPLASH SCREEN
-     ============================================================ -->
-<div id="splash">
-  <img src="videos/guide-1.png" alt="Guide" class="splash-guide" />
-  <div class="splash-line splash-hi">hi</div>
-  <div class="splash-line splash-msg" data-i18n="splash.msg">بشرفنا انك تتعرف علينا</div>
-  <div class="splash-sub" data-i18n="splash.sub">IBRAHIM KHALAF · PORTFOLIO</div>
-</div>
+<!-- (Splash removed — elegant entrance instead) -->
 
 <!-- ============================================================
      TOPBAR
@@ -306,6 +299,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
      HERO
      ============================================================ -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="container hero-grid">
     <div>
       <h1><span data-i18n="hero.hi">Hi, I'm</span> <span class="accent" id="hero-name">Ibrahim Khalaf</span></h1>
@@ -494,11 +488,7 @@ footer { padding: 40px 0; border-top: 1px solid var(--border); color: var(--text
   </div>
 </footer>
 
-<!-- Mascot (guide waving to visitors) -->
-<div id="mascot" class="mascot">
-  <img src="videos/guide-1.png" alt="Guide" />
-  <button class="mascot-close" aria-label="Close" onclick="document.getElementById('mascot').classList.remove('show'); setTimeout(()=>document.getElementById('mascot').remove(),400)">×</button>
-</div>
+<!-- (Mascot removed — cleaner design) -->
 
 <script>
 /* ============================================================
@@ -806,33 +796,6 @@ function revealOnScroll(){
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 }
 
-// Splash screen — gentle sequential reveal: "hi" then "بشرفنا انك تتعرف علينا"
-(function splashInit(){
-  const splash = document.getElementById("splash");
-  const SPLASH_ONCE = true;
-  if (SPLASH_ONCE && sessionStorage.getItem("splashShown")) {
-    splash.remove();
-    const m = document.getElementById("mascot");
-    if (m) m.classList.add("show");
-    return;
-  }
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const guide = splash.querySelector(".splash-guide");
-  const hi = splash.querySelector(".splash-hi");
-  const msg = splash.querySelector(".splash-msg");
-  const sub = splash.querySelector(".splash-sub");
-  if (reduce) {
-    guide.classList.add("show"); hi.classList.add("show"); msg.classList.add("show"); sub.classList.add("show");
-    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>{ splash.remove(); document.getElementById("mascot").classList.add("show"); }, 1200); }, 1400);
-  } else {
-    setTimeout(() => guide.classList.add("show"), 300);
-    setTimeout(() => hi.classList.add("show"), 900);
-    setTimeout(() => msg.classList.add("show"), 2200);
-    setTimeout(() => sub.classList.add("show"), 3400);
-    setTimeout(() => { splash.classList.add("hide"); setTimeout(()=>{ splash.remove(); document.getElementById("mascot").classList.add("show"); }, 1200); }, 5600);
-  }
-  if (SPLASH_ONCE) sessionStorage.setItem("splashShown", "1");
-})();
 
 document.getElementById("langToggle").addEventListener("click", ()=>{
   currentLang = currentLang === "ar" ? "en" : "ar";
@@ -883,7 +846,7 @@ if (typeof gsap !== 'undefined') {
     });
   });
   // Hero parallax
-  gsap.to('.hero::before', {
+  gsap.to('.hero-bg', {
     yPercent: 30, ease: 'none',
     scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
   });
