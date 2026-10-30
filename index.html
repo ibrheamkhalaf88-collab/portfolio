@@ -1080,6 +1080,91 @@
       background: rgba(12, 12, 24, 0.6);
     }
 
+    .philosophy-card {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(168, 85, 247, 0.12), rgba(34, 211, 238, 0.12));
+      border: 1px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .philosophy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(168, 85, 247, 0.18), rgba(34, 211, 238, 0.18));
+      opacity: 0.5;
+    }
+
+    .philosophy-card::after {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);
+      border-radius: var(--radius-lg);
+      z-index: -1;
+      filter: blur(20px);
+      opacity: 0.4;
+      animation: philosophy-glow 4s ease-in-out infinite;
+    }
+
+    @keyframes philosophy-glow {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.02); }
+    }
+
+    .philosophy-content {
+      text-align: center;
+      padding: clamp(36px, 6vw, 56px) !important;
+    }
+
+    .philosophy-content .journey-year {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(168, 85, 247, 0.25));
+      border-color: rgba(244, 63, 94, 0.5);
+      color: var(--text-primary);
+    }
+
+    .philosophy-content .journey-title {
+      font-size: clamp(28px, 5vw, 38px);
+      background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 300% 300%;
+      animation: gradient-shift 6s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .philosophy-content .journey-desc {
+      font-size: clamp(16px, 2.5vw, 20px);
+      line-height: 2;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 28px;
+    }
+
+    .philosophy-content .journey-skills {
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .philosophy-content .journey-skill {
+      background: rgba(244, 63, 94, 0.18);
+      border-color: rgba(244, 63, 94, 0.4);
+      color: var(--text-primary);
+      font-weight: 600;
+      padding: 10px 22px;
+      font-size: 13px;
+    }
+
+    .philosophy-content .journey-skill:hover {
+      background: rgba(244, 63, 94, 0.35);
+      transform: translateY(-2px);
+      transition: all 0.3s ease;
+    }
+
     @media (max-width: 720px) {
       .journey-timeline::before {
         right: 16px;
@@ -1523,6 +1608,26 @@
                 <span class="journey-skill" data-ar="Full-Stack" data-en="Full-Stack">Full-Stack</span>
                 <span class="journey-skill" data-ar="Problem Solving" data-en="Problem Solving">Problem Solving</span>
                 <span class="journey-skill" data-ar="Builder" data-en="Builder">Builder</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card philosophy-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);">
+                <i class="ti ti-heart" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content philosophy-content">
+              <div class="journey-year" data-ar="فلسفتي" data-en="My Philosophy">فلسفتي</div>
+              <h3 class="journey-title" data-ar="شغوف بالحياة" data-en="Passionate About Life">شغوف بالحياة</h3>
+              <p class="journey-desc" data-ar="أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة" data-en="I'm deeply passionate about life — I strive to achieve every dream, no matter how big. Every station taught me that impossible is just an opinion, and passion with persistence creates miracles. I don't give up, I don't stop, I keep moving forward with love and determination">
+                أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="شغوف" data-en="Passionate">شغوف</span>
+                <span class="journey-skill" data-ar="حالم" data-en="Dreamer">حالم</span>
+                <span class="journey-skill" data-ar="مثابر" data-en="Persistent">مثابر</span>
+                <span class="journey-skill" data-ar="لا أستسلم" data-en="Never Give Up">لا أستسلم</span>
               </div>
             </div>
           </article>
