@@ -954,6 +954,152 @@
       transform: translateY(-4px);
     }
 
+    .journey-timeline {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .journey-timeline::before {
+      content: "";
+      position: absolute;
+      right: 28px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, transparent 0%, rgba(148, 163, 255, 0.4) 20%, rgba(148, 163, 255, 0.4) 80%, transparent 100%);
+    }
+
+    .journey-card {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 24px;
+      position: relative;
+      padding-bottom: 40px;
+    }
+
+    .journey-card:last-child {
+      padding-bottom: 0;
+    }
+
+    .journey-marker {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .journey-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4), 0 0 0 4px var(--bg), 0 0 0 6px rgba(148, 163, 255, 0.3);
+      z-index: 2;
+      position: relative;
+    }
+
+    .journey-line {
+      flex: 1;
+      width: 2px;
+      background: rgba(148, 163, 255, 0.3);
+      margin-top: 8px;
+    }
+
+    .journey-card:last-child .journey-line {
+      display: none;
+    }
+
+    .journey-content {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(24px, 4vw, 36px);
+      position: relative;
+    }
+
+    .journey-content::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 60%);
+      border-radius: var(--radius-lg);
+    }
+
+    .journey-content > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .journey-year {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.18);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .journey-title {
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: var(--accent);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .journey-desc {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+
+    .journey-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .journey-skill {
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-tertiary);
+      background: rgba(12, 12, 24, 0.6);
+    }
+
+    @media (max-width: 720px) {
+      .journey-timeline::before {
+        right: 16px;
+      }
+
+      .journey-card {
+        grid-template-columns: 50px 1fr;
+        gap: 16px;
+      }
+
+      .journey-icon {
+        width: 44px;
+        height: 44px;
+      }
+
+      .journey-icon i {
+        font-size: 18px;
+      }
+    }
+
     @media (max-width: 1200px) {
       .nav-links,
       .cta-link {
@@ -1028,6 +1174,7 @@
       <nav class="nav-links" id="navLinks">
         <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
         <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
+        <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
         <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
         <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
         <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
@@ -1051,6 +1198,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
     <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
+    <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
     <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
     <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
     <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
@@ -1221,6 +1369,144 @@
         </div>
       </div>
     </section>
+
+    <section class="section" id="journey">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="kicker-line"></span>
+            <span data-ar="MY JOURNEY" data-en="MY JOURNEY">MY JOURNEY</span>
+            <span class="kicker-line"></span>
+          </div>
+          <div class="section-title">
+            <span data-ar="رحلتي" data-en="MY">رحلتي</span>
+            <span class="gradient" data-ar="في الحياة" data-en="PATH">في الحياة</span>
+          </div>
+          <p class="section-lead" data-ar="محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً" data-en="Stations that shaped me, from childhood to code, every experience added something">
+            محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً
+          </p>
+        </div>
+        <div class="journey-timeline">
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                <i class="ti ti-building-castle" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="الطفولة" data-en="Childhood">الطفولة</div>
+              <h3 class="journey-title" data-ar="بقطان" data-en="Baqtan">بقطان</h3>
+              <p class="journey-desc" data-ar="بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا" data-en="My first beginning, learned basics of discipline and memorization, seeds of character grew from here">
+                بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="انضباط" data-en="Discipline">انضباط</span>
+                <span class="journey-skill" data-ar="حفظ" data-en="Memorization">حفظ</span>
+                <span class="journey-skill" data-ar="أساسيات" data-en="Fundamentals">أساسيات</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
+                <i class="ti ti-pencil" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="مرحلة مبكرة" data-en="Early Stage">مرحلة مبكرة</div>
+              <h3 class="journey-title" data-ar="أنامل" data-en="Anamil">أنامل</h3>
+              <p class="journey-desc" data-ar="تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار" data-en="Developed writing and creativity skills, discovered passion for expression and building ideas">
+                تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="كتابة" data-en="Writing">كتابة</span>
+                <span class="journey-skill" data-ar="إبداع" data-en="Creativity">إبداع</span>
+                <span class="journey-skill" data-ar="تعبير" data-en="Expression">تعبير</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">
+                <i class="ti ti-school" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="تعليم" data-en="Education">تعليم</div>
+              <h3 class="journey-title" data-ar="الامديست (AMIDEAST)" data-en="AMIDEAST">الامديست</h3>
+              <p class="journey-desc" data-ar="برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية" data-en="Advanced training programs, English language, leadership skills, opened global horizons">
+                برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="English" data-en="English">English</span>
+                <span class="journey-skill" data-ar="Leadership" data-en="Leadership">Leadership</span>
+                <span class="journey-skill" data-ar="Global Mindset" data-en="Global Mindset">Global Mindset</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+                <i class="ti ti-gamepad" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="شغف الألعاب" data-en="Gaming Era">شغف الألعاب</div>
+              <h3 class="journey-title" data-ar="نادي فورسيه (Forsia)" data-en="Forsia Club">نادي فورسيه</h3>
+              <p class="journey-desc" data-ar="مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط" data-en="Competitive gaming community, learned strategy, teamwork, and quick thinking under pressure">
+                مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Strategy" data-en="Strategy">Strategy</span>
+                <span class="journey-skill" data-ar="Teamwork" data-en="Teamwork">Teamwork</span>
+                <span class="journey-skill" data-ar="Quick Thinking" data-en="Quick Thinking">Quick Thinking</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #22d3ee, #06b6d4);">
+                <i class="ti ti-trophy" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="إنجاز" data-en="Achievement">إنجاز</div>
+              <h3 class="journey-title" data-ar="بطل فورت نايت" data-en="Fortnite Champion">بطل فورت نايت</h3>
+              <p class="journey-desc" data-ar="حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم" data-en="Achieved tournaments and high ranks, taught me perseverance, analysis, and that loss is just a lesson for the next win">
+                حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Perseverance" data-en="Perseverance">Perseverance</span>
+                <span class="journey-skill" data-ar="Analysis" data-en="Analysis">Analysis</span>
+                <span class="journey-skill" data-ar="Competitive" data-en="Competitive">Competitive</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
+                <i class="ti ti-code" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="الحاضر" data-en="Present">الحاضر</div>
+              <h3 class="journey-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer">مطور Full-Stack</h3>
+              <p class="journey-desc" data-ar="جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية" data-en="Combined all experiences: Baqtan's discipline, Anamil's creativity, AMIDEAST's global view, Forsia's strategy, Fortnite's competition — into code that solves real problems">
+                جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Full-Stack" data-en="Full-Stack">Full-Stack</span>
+                <span class="journey-skill" data-ar="Problem Solving" data-en="Problem Solving">Problem Solving</span>
+                <span class="journey-skill" data-ar="Builder" data-en="Builder">Builder</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div    </section>
 
     <section class="section" id="works">
       <div class="section-inner">
