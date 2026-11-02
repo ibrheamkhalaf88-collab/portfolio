@@ -9,17 +9,17 @@
   <meta property="og:title" content="Ibrahim Khalaf | Portfolio">
   <meta property="og:description" content="Full-Stack Developer • Automation • Security-Oriented">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://image.thum.io/get/width/1200/https://ibrheamkhalaf88-collab.github.io/portfolio/">
+  <meta property="og:image" content="https://ibrheamkhalaf88-collab.github.io/portfolio/images/og.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ibrahim Khalaf | Portfolio">
   <meta name="twitter:description" content="Full-Stack Developer • Automation • Security-Oriented">
-  <meta name="twitter:image" content="https://image.thum.io/get/width/1200/https://ibrheamkhalaf88-collab.github.io/portfolio/">
-  <meta name="theme-color" content="#05050a">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5L55.5 25L77 27L60.5 42L65 64L50 52L35 64L39.5 42L23 27L44.5 25Z' fill='%2322d3ee'/%3E%3C/svg%3E">
+  <meta name="twitter:image" content="https://ibrheamkhalaf88-collab.github.io/portfolio/images/og.jpg">
+  <meta name="theme-color" content="#100f0d">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 5L55.5 25L77 27L60.5 42L65 64L50 52L35 64L39.5 42L23 27L44.5 25Z' fill='%23dca873'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css">
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -27,18 +27,22 @@
 
   <style>
     :root {
-      --bg: #05050a;
-      --bg-2: #0b0b14;
-      --surface: radial-gradient(180deg, rgba(99, 102, 241, 0.12) 0%, rgba(15, 15, 28, 0.9) 100%);
-      --text-primary: #f8f8ff;
-      --text-secondary: #b9b9d6;
-      --text-tertiary: #7c7ca8;
-      --accent: linear-gradient(90deg, #22d3ee 0%, #a855f7 50%, #ec4899 100%);
-      --border: rgba(148, 163, 255, 0.28);
-      --grid: rgba(99, 102, 241, 0.12);
-      --radius-lg: 28px;
-      --radius-md: 18px;
-      --max-w: 1480px;
+      --bg: #100f0d;
+      --bg-2: #171613;
+      --surface: #181714;
+      --text-primary: #f1ede4;
+      --text-secondary: #b3ada1;
+      --text-tertiary: #8b857a;
+      --accent: #dca873;
+      --border: rgba(241, 237, 228, 0.1);
+      --border-strong: rgba(241, 237, 228, 0.22);
+      --radius-lg: 14px;
+      --radius-md: 8px;
+      --max-w: 1320px;
+      --gutter: clamp(20px, 5vw, 64px);
+      --font: "IBM Plex Sans Arabic", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --nav-h: 72px;
     }
 
     * {
@@ -48,65 +52,42 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
-      scroll-behavior: auto;
     }
 
     html {
       background: var(--bg);
+      overflow-x: clip;
     }
 
     body {
-      font-family: "Tajawal", "Inter", system-ui, sans-serif;
+      font-family: var(--font);
       color: var(--text-primary);
-      background: radial-gradient(140% 140% at 50% 0%, rgba(99, 102, 241, 0.14) 0%, transparent 60%), var(--bg);
-      line-height: 1.9;
-      overflow-x: hidden;
+      background: var(--bg);
+      line-height: 1.75;
+      overflow-x: clip;
     }
 
-    body.en {
-      font-family: "Jost", "Inter", system-ui, sans-serif;
+    h3,
+    .section-title,
+    .card-title {
+      text-wrap: balance;
     }
 
-    .bg-grid {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 140px 140px;
-      mask-image: radial-gradient(70% 70% at 50% 0%, black 0%, transparent 100%);
-      opacity: 0.4;
-      z-index: -3;
+    p {
+      text-wrap: pretty;
     }
 
-    .bg-glow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
+    a:focus-visible,
+    button:focus-visible,
+    video:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
     }
 
-    .bg-glow::before,
-    .bg-glow::after {
-      content: "";
-      position: absolute;
-      filter: blur(160px);
-      opacity: 0.7;
-    }
-
-    .bg-glow::before {
-      width: 42vw;
-      height: 42vw;
-      left: -18vw;
-      top: -16vw;
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.22) 0%, transparent 70%);
-    }
-
-    .bg-glow::after {
-      width: 38vw;
-      height: 38vw;
-      right: -16vw;
-      top: 10vw;
-      background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 72%);
+    .bg-grid,
+    .bg-glow,
+    .kicker-line {
+      display: none;
     }
 
     header {
@@ -114,8 +95,8 @@
       top: 0;
       width: 100%;
       z-index: 900;
-      backdrop-filter: blur(18px) saturate(120%);
-      background: linear-gradient(180deg, rgba(5, 5, 10, 0.98) 0%, rgba(5, 5, 10, 0.7) 100%);
+      background: rgba(16, 15, 13, 0.92);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -126,160 +107,171 @@
       gap: 24px;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 clamp(20px, 6vw, 80px);
-      height: 92px;
+      padding: 0 var(--gutter);
+      height: var(--nav-h);
     }
 
-    .brand {
+    .brand,
+    .footer-brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
       color: var(--text-primary);
     }
 
     .brand-dot {
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 60px rgba(168, 85, 247, 0.8);
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
-      line-height: 1;
+      line-height: 1.3;
     }
 
     .brand-name {
-      font-weight: 800;
-      letter-spacing: -0.01em;
+      font-weight: 600;
+      font-size: 15px;
     }
 
     .brand-role {
-      margin-top: 4px;
-      font-size: 12px;
+      font-family: var(--mono);
+      font-size: 11px;
       color: var(--text-tertiary);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(15, 15, 28, 0.8);
+      gap: 4px;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text-secondary);
       font-size: 14px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      transition: color 0.3s ease, background 0.3s ease;
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--text-primary);
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.24) 0%, transparent 70%);
+    }
+
+    .nav-links a.active {
+      box-shadow: inset 0 -1px 0 var(--accent);
+      border-radius: 0;
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .lang-btn {
       border: 1px solid var(--border);
       background: transparent;
       color: var(--text-secondary);
-      border-radius: 999px;
-      padding: 10px 18px;
-      font-size: 13px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
+      border-radius: var(--radius-md);
+      min-height: 40px;
+      padding: 0 12px;
+      font-family: var(--mono);
+      font-size: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--border-strong);
+      color: var(--text-primary);
     }
 
     .cta-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 16px;
       text-decoration: none;
-      color: var(--text-primary);
-      border-radius: 999px;
-      padding: 12px 26px;
-      border: 1px solid transparent;
-      background: var(--accent);
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      color: var(--bg);
+      background: var(--text-primary);
+      transition: background 0.2s ease;
+    }
+
+    .cta-link:hover {
+      background: #fff;
     }
 
     .hamburger {
       display: none;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: 5px;
-      padding: 10px;
+      width: 44px;
+      height: 44px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: var(--radius-md);
       background: transparent;
       cursor: pointer;
     }
 
     .hamburger span {
-      width: 22px;
+      width: 20px;
       height: 2px;
       background: var(--text-primary);
-      border-radius: 2px;
       transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .mobile-menu {
       position: fixed;
-      top: 92px;
-      right: -100%;
+      top: var(--nav-h);
+      inset-inline-end: 0;
       width: 100%;
       max-width: 320px;
-      height: calc(100vh - 92px);
-      background: rgba(5, 5, 10, 0.98);
-      backdrop-filter: blur(20px);
-      border-left: 1px solid var(--border);
+      height: calc(100dvh - var(--nav-h));
+      background: var(--bg-2);
+      border-inline-start: 1px solid var(--border);
       z-index: 899;
-      padding: 30px 24px;
+      padding: 16px var(--gutter);
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
     }
 
     .mobile-menu.open {
-      right: 0;
+      visibility: visible;
+      opacity: 1;
     }
 
     .mobile-menu a {
       text-decoration: none;
       color: var(--text-secondary);
-      font-size: 18px;
-      padding: 16px 20px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
+      font-size: 17px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .mobile-menu a:hover,
     .mobile-menu a.active {
       color: var(--text-primary);
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.24) 0%, transparent 70%);
     }
 
     .mobile-menu .lang-btn {
+      margin-top: 20px;
       width: 100%;
-      text-align: center;
     }
 
     main {
@@ -288,171 +280,174 @@
     }
 
     .hero {
-      min-height: 100svh;
       display: grid;
       align-items: center;
+      min-height: 92svh;
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(30px, 6vw, 70px);
-      align-items: center;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
+      align-items: end;
+      width: 100%;
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: clamp(150px, 18vw, 230px) clamp(20px, 6vw, 80px) clamp(110px, 14vw, 170px);
+      padding: calc(var(--nav-h) + clamp(48px, 7vw, 96px)) var(--gutter) clamp(56px, 7vw, 96px);
     }
 
     .hero-content {
-      grid-column: 1 / 8;
+      grid-column: 1 / 9;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: clamp(22px, 4vw, 36px);
+      gap: 24px;
     }
 
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.8em;
-      font-size: 9px;
-      color: var(--text-tertiary);
-    }
-
-    .kicker-line {
-      width: clamp(36px, 8vw, 70px);
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.9), transparent);
+    .hero-kicker,
+    .section-kicker {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
     }
 
     .hero-title {
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      line-height: 0.9;
-      font-size: clamp(68px, 14vw, 190px);
-      text-transform: uppercase;
+      direction: ltr;
+      text-align: start;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      font-size: clamp(52px, 8vw, 112px);
+    }
+
+    [dir="rtl"] .hero-title {
+      text-align: end;
     }
 
     .hero-title .gradient {
-      background: var(--accent);
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--text-secondary);
     }
 
     .hero-subtitle {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 16px;
-      font-size: clamp(18px, 3vw, 32px);
-      color: var(--text-secondary);
+      gap: 4px 12px;
+      font-size: clamp(16px, 1.6vw, 20px);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .hero-subtitle span:nth-child(even) {
+      color: var(--text-tertiary);
     }
 
     .hero-lead {
-      max-width: 680px;
+      max-width: 62ch;
       color: var(--text-secondary);
-      font-size: clamp(17px, 2vw, 20px);
+      font-size: clamp(16px, 1.4vw, 18px);
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 8px 24px;
     }
 
     .meta-pill {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+      gap: 8px;
       color: var(--text-secondary);
       font-size: 14px;
+    }
+
+    .meta-pill i {
+      color: var(--text-tertiary);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 10px;
+      margin-top: 8px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 24px;
       text-decoration: none;
-      border-radius: 999px;
-      padding: 16px 36px;
-      font-weight: 600;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
     }
 
     .btn-primary {
-      color: var(--text-primary);
-      background: var(--accent);
+      color: var(--bg);
+      background: var(--text-primary);
+    }
+
+    .btn-primary:hover {
+      background: #fff;
     }
 
     .btn-ghost {
       color: var(--text-primary);
-      border: 1px solid var(--border);
-      background: rgba(15, 15, 28, 0.8);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text-secondary);
     }
 
     .hero-visual {
-      grid-column: 8 / -1;
-      position: relative;
+      grid-column: 9 / -1;
+      min-width: 0;
     }
 
     .hero-card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      overflow: hidden;
-      box-shadow: 0 160px 220px -200px rgba(99, 102, 241, 0.9);
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(34, 211, 238, 0.16), transparent 60%);
+      border-top: 1px solid var(--border-strong);
     }
 
     .hero-card-inner {
-      position: relative;
       display: grid;
-      gap: 26px;
-      padding: clamp(34px, 6vw, 58px);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      gap: 16px;
+      padding-top: 16px;
     }
 
     .card-title {
-      font-size: clamp(26px, 4vw, 38px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .card-header p {
+      display: none;
     }
 
     .card-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 16px;
     }
 
     .card-item {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      padding: 18px 22px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: rgba(12, 12, 24, 0.9);
+      min-width: 0;
+    }
+
+    .card-item.wide {
+      grid-column: 1 / -1;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
     }
 
     .card-label {
@@ -461,227 +456,215 @@
     }
 
     .card-value {
-      font-weight: 600;
+      font-weight: 500;
+    }
+
+    .card-item.stat {
+      flex-direction: column-reverse;
+    }
+
+    .card-item.stat .card-value {
+      font-family: var(--mono);
+      font-size: clamp(40px, 4vw, 56px);
+      font-weight: 500;
+      line-height: 1.1;
     }
 
     .section {
       position: relative;
-      padding: clamp(90px, 14vw, 170px) 0;
+      scroll-margin-top: var(--nav-h);
+      padding: clamp(64px, 8vw, 112px) 0;
+      border-top: 1px solid var(--border);
     }
 
     .section-inner {
       max-width: var(--max-w);
       margin: 0 auto;
-      padding: 0 clamp(20px, 6vw, 80px);
+      padding: 0 var(--gutter);
       display: flex;
       flex-direction: column;
-      gap: clamp(40px, 8vw, 80px);
+      gap: clamp(36px, 5vw, 64px);
     }
 
     .section-header {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-    }
-
-    .section-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.8em;
-      font-size: 9px;
-      color: var(--text-tertiary);
+      gap: 12px;
     }
 
     .section-title {
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-transform: uppercase;
-      font-size: clamp(58px, 12vw, 160px);
-      line-height: 0.9;
+      font-weight: 600;
+      line-height: 1.2;
+      font-size: clamp(32px, 4.4vw, 56px);
+    }
+
+    .section-title .gradient {
+      color: var(--text-secondary);
     }
 
     .section-lead {
-      max-width: 720px;
+      max-width: 62ch;
       color: var(--text-secondary);
-      font-size: clamp(17px, 2vw, 20px);
+      font-size: clamp(16px, 1.4vw, 18px);
     }
 
     .works-list {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(60px, 12vw, 120px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(48px, 6vw, 80px) clamp(24px, 4vw, 48px);
     }
 
     .work-item {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-item:nth-child(-n+3) {
+      grid-column: 1 / -1;
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(26px, 6vw, 70px);
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(24px, 4vw, 56px);
       align-items: center;
     }
 
     .work-preview {
-      grid-column: 1 / 8;
+      display: block;
       position: relative;
+      aspect-ratio: 16 / 10;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1px solid var(--border);
-      box-shadow: 0 160px 220px -200px rgba(168, 85, 247, 0.8);
+      background: var(--surface);
+      transition: border-color 0.25s ease;
     }
 
-    .work-preview::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, transparent 40%, rgba(5, 5, 10, 0.9) 100%);
-      z-index: 1;
+    .work-preview:hover {
+      border-color: var(--border-strong);
     }
 
     .work-preview img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(1);
-      transition: filter 1.2s ease, transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+      object-position: top;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .work-preview-overlay {
-      position: absolute;
-      inset: 0;
+    .work-preview:hover img {
+      transform: scale(1.02);
+    }
+
+    .work-panel {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(5, 5, 10, 0.7);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 2;
+      gap: 12px;
+      height: 100%;
+      color: var(--text-tertiary);
+      background-image: repeating-linear-gradient(135deg, transparent 0 14px, rgba(241, 237, 228, 0.025) 14px 15px);
+      transition: color 0.25s ease;
     }
 
-    .work-item:hover .work-preview-overlay {
-      opacity: 1;
+    .work-panel i {
+      font-size: 44px;
     }
 
-    .work-preview-overlay span {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 30px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: var(--text-primary);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      font-size: 12px;
-      transform: translateY(20px);
-      transition: transform 0.4s ease;
+    .work-panel span {
+      font-family: var(--mono);
+      font-size: 13px;
     }
 
-    .work-item:hover .work-preview-overlay span {
-      transform: translateY(0);
-    }
-
-    .work-item:hover .work-preview img {
-      filter: grayscale(0);
-      transform: scale(1.05);
+    .work-preview:hover .work-panel {
+      color: var(--accent);
     }
 
     .work-content {
-      grid-column: 8 / -1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 12px;
     }
 
     .work-index {
-      text-transform: uppercase;
-      letter-spacing: 0.8em;
-      font-size: 9px;
-      color: var(--text-tertiary);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
     }
 
     .work-title {
-      font-weight: 900;
-      letter-spacing: -0.06em;
-      text-transform: uppercase;
-      font-size: clamp(38px, 7vw, 96px);
-      line-height: 0.92;
+      font-weight: 600;
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+
+    .work-item:nth-child(-n+3) .work-title {
+      font-size: clamp(26px, 3vw, 40px);
     }
 
     .work-desc {
       color: var(--text-secondary);
-      max-width: 560px;
+      max-width: 60ch;
     }
 
     .work-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 2px 14px;
     }
 
     .work-tag {
-      padding: 9px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 13px;
-      color: var(--text-secondary);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-tertiary);
     }
 
     .work-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 4px 20px;
     }
 
     .work-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
+      min-height: 44px;
       text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
       color: var(--text-primary);
-      padding: 12px 26px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+      transition: color 0.2s ease;
+    }
+
+    .work-link:hover {
+      color: var(--accent);
     }
 
     .bento {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(16px, 4vw, 26px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 56px);
     }
 
     .bento-card {
-      grid-column: span 6;
-      position: relative;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
-      overflow: hidden;
+      min-width: 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-strong);
     }
 
     .bento-card.large {
-      grid-column: span 12;
+      grid-column: 1 / -1;
     }
 
     .bento-card-inner {
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      padding: clamp(30px, 6vw, 54px);
-    }
-
-    .bento-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(99, 102, 241, 0.16), transparent 60%);
-    }
-
-    .bento-card-inner>* {
-      position: relative;
-      z-index: 1;
+      gap: 16px;
     }
 
     .bento-header {
@@ -690,216 +673,239 @@
       justify-content: space-between;
     }
 
+    .bento-header i,
+    .bento-header p {
+      display: none;
+    }
+
     .bento-title {
-      font-weight: 800;
-      font-size: clamp(24px, 4vw, 34px);
-      letter-spacing: -0.02em;
+      font-weight: 600;
+      font-size: clamp(20px, 2vw, 24px);
+    }
+
+    .bento-card .card-list {
+      margin-top: 8px;
     }
 
     .tag-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .tag {
-      padding: 9px 18px;
-      border-radius: 999px;
+      padding: 4px 12px;
+      border-radius: 6px;
       border: 1px solid var(--border);
+      font-size: 14px;
       color: var(--text-secondary);
+    }
+
+    .journey-timeline {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .journey-card {
+      display: block;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .journey-marker,
+    .journey-skills {
+      display: none;
+    }
+
+    .journey-content {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 3fr) minmax(0, 5fr);
+      column-gap: clamp(20px, 3vw, 40px);
+      align-items: baseline;
+    }
+
+    .journey-year {
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    .journey-title {
+      font-size: clamp(18px, 1.6vw, 20px);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .journey-desc {
+      color: var(--text-secondary);
+    }
+
+    .philosophy-content .journey-desc {
+      color: var(--text-primary);
     }
 
     .videos-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(16px, 4vw, 26px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px);
     }
 
     .video-card {
-      grid-column: span 6;
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
+      min-width: 0;
     }
 
     .video-card video {
-      width: 100%;
       display: block;
-      aspect-ratio: 16/9;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
-      filter: grayscale(1);
-      transition: filter 0.8s ease;
-    }
-
-    .video-card:hover video {
-      filter: grayscale(0);
+      background: var(--surface);
+      border-radius: var(--radius-lg);
     }
 
     .video-overlay {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 24px 30px;
-      background: linear-gradient(180deg, transparent 0%, rgba(5, 5, 10, 0.95) 100%);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      padding-top: 12px;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(16px, 4vw, 26px);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .service-card {
-      grid-column: span 4;
-      position: relative;
+      min-width: 0;
       border-radius: var(--radius-lg);
       border: 1px solid var(--border);
       background: var(--surface);
     }
 
     .service-card.large {
-      grid-column: span 12;
+      grid-column: 1 / -1;
     }
 
     .service-card-inner {
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      padding: clamp(30px, 6vw, 50px);
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(34, 211, 238, 0.14), transparent 60%);
-    }
-
-    .service-card-inner>* {
-      position: relative;
-      z-index: 1;
+      gap: 16px;
+      height: 100%;
+      padding: clamp(24px, 3vw, 32px);
     }
 
     .service-title {
-      font-size: clamp(24px, 4vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: clamp(19px, 1.8vw, 22px);
+      font-weight: 600;
+      line-height: 1.4;
     }
 
     .service-price {
-      font-size: clamp(38px, 8vw, 72px);
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      background: var(--accent);
-      -webkit-background-clip: text;
-      color: transparent;
+      direction: ltr;
+      text-align: end;
+      font-family: var(--mono);
+      font-size: clamp(24px, 2.4vw, 30px);
+      font-weight: 500;
+    }
+
+    [dir="ltr"] .service-price {
+      text-align: start;
+    }
+
+    .service-card.large .service-price {
+      font-family: var(--font);
+      direction: inherit;
+      text-align: start;
     }
 
     .service-list {
       display: grid;
-      gap: 12px;
+      gap: 6px;
       color: var(--text-secondary);
-    }
-
-    .contact {
-      padding-bottom: clamp(90px, 14vw, 150px);
+      font-size: 15px;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: clamp(16px, 4vw, 26px);
-    }
-
-    .contact-card {
-      grid-column: 1 / 8;
-      position: relative;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(32px, 5vw, 72px);
+      align-items: start;
     }
 
     .contact-card-inner {
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 26px;
-      padding: clamp(34px, 8vw, 70px);
-    }
-
-    .contact-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(168, 85, 247, 0.18), transparent 60%);
-    }
-
-    .contact-card-inner>* {
-      position: relative;
-      z-index: 1;
+      align-items: flex-start;
+      gap: 24px;
     }
 
     .contact-title {
-      font-weight: 900;
-      letter-spacing: -0.08em;
-      text-transform: uppercase;
-      font-size: clamp(56px, 10vw, 130px);
-      line-height: 0.9;
+      direction: ltr;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-size: clamp(32px, 4vw, 52px);
+    }
+
+    [dir="rtl"] .contact-title {
+      text-align: end;
+    }
+
+    .contact-title .gradient {
+      color: var(--text-secondary);
     }
 
     .contact-links {
-      grid-column: 8 / -1;
       display: grid;
-      gap: 14px;
+      min-width: 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .contact-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
       text-decoration: none;
       color: var(--text-primary);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: 22px 30px;
-      background: rgba(12, 12, 24, 0.9);
+      border-top: 1px solid var(--border);
+      padding: 14px 0;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link > div {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-link:hover {
+      color: var(--accent);
     }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 0;
+      padding: 32px var(--gutter);
     }
 
     .footer-inner {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 20px;
-      text-align: center;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: var(--text-primary);
+      justify-content: space-between;
+      gap: 16px 32px;
+      max-width: calc(var(--max-w) - 2 * var(--gutter));
+      margin: 0 auto;
     }
 
     .footer-text {
+      order: 3;
+      width: 100%;
+      font-family: var(--mono);
+      font-size: 12px;
       color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.8em;
-      font-size: 8px;
     }
 
     .footer-social {
       display: flex;
-      gap: 14px;
+      gap: 4px;
     }
 
     .footer-social a {
@@ -908,28 +914,23 @@
       justify-content: center;
       width: 44px;
       height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
       color: var(--text-secondary);
-      transition: all 0.3s ease;
+      transition: color 0.2s ease;
     }
 
     .footer-social a:hover {
-      color: var(--text-primary);
-      border-color: rgba(34, 211, 238, 0.8);
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 70%);
-      transform: translateY(-3px);
+      color: var(--accent);
     }
 
     .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      background: rgba(12, 12, 24, 0.9);
+      bottom: 24px;
+      inset-inline-start: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background: var(--bg-2);
       color: var(--text-primary);
       display: flex;
       align-items: center;
@@ -937,252 +938,17 @@
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(20px);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.2s ease, visibility 0.2s ease, border-color 0.2s ease;
       z-index: 898;
     }
 
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
     }
 
     .back-to-top:hover {
-      border-color: rgba(34, 211, 238, 0.8);
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.18), transparent 70%);
-      transform: translateY(-4px);
-    }
-
-    .journey-timeline {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .journey-timeline::before {
-      content: "";
-      position: absolute;
-      right: 28px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, transparent 0%, rgba(148, 163, 255, 0.4) 20%, rgba(148, 163, 255, 0.4) 80%, transparent 100%);
-    }
-
-    .journey-card {
-      display: grid;
-      grid-template-columns: 70px 1fr;
-      gap: 24px;
-      position: relative;
-      padding-bottom: 40px;
-    }
-
-    .journey-card:last-child {
-      padding-bottom: 0;
-    }
-
-    .journey-marker {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .journey-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4), 0 0 0 4px var(--bg), 0 0 0 6px rgba(148, 163, 255, 0.3);
-      z-index: 2;
-      position: relative;
-    }
-
-    .journey-line {
-      flex: 1;
-      width: 2px;
-      background: rgba(148, 163, 255, 0.3);
-      margin-top: 8px;
-    }
-
-    .journey-card:last-child .journey-line {
-      display: none;
-    }
-
-    .journey-content {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: clamp(24px, 4vw, 36px);
-      position: relative;
-    }
-
-    .journey-content::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.12), transparent 60%);
-      border-radius: var(--radius-lg);
-    }
-
-    .journey-content > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .journey-year {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: 999px;
-      background: rgba(99, 102, 241, 0.18);
-      border: 1px solid rgba(99, 102, 241, 0.4);
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-    }
-
-    .journey-title {
-      font-size: clamp(22px, 4vw, 30px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-      background: var(--accent);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .journey-desc {
-      color: var(--text-secondary);
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-
-    .journey-skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .journey-skill {
-      padding: 7px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--text-tertiary);
-      background: rgba(12, 12, 24, 0.6);
-    }
-
-    .philosophy-card {
-      background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(168, 85, 247, 0.12), rgba(34, 211, 238, 0.12));
-      border: 1px solid transparent;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .philosophy-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(244, 63, 94, 0.18), rgba(168, 85, 247, 0.18), rgba(34, 211, 238, 0.18));
-      opacity: 0.5;
-    }
-
-    .philosophy-card::after {
-      content: "";
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);
-      border-radius: var(--radius-lg);
-      z-index: -1;
-      filter: blur(20px);
-      opacity: 0.4;
-      animation: philosophy-glow 4s ease-in-out infinite;
-    }
-
-    @keyframes philosophy-glow {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.02); }
-    }
-
-    .philosophy-content {
-      text-align: center;
-      padding: clamp(36px, 6vw, 56px) !important;
-    }
-
-    .philosophy-content .journey-year {
-      background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(168, 85, 247, 0.25));
-      border-color: rgba(244, 63, 94, 0.5);
-      color: var(--text-primary);
-    }
-
-    .philosophy-content .journey-title {
-      font-size: clamp(28px, 5vw, 38px);
-      background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);
-      -webkit-background-clip: text;
-      color: transparent;
-      background-size: 300% 300%;
-      animation: gradient-shift 6s ease infinite;
-    }
-
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-
-    .philosophy-content .journey-desc {
-      font-size: clamp(16px, 2.5vw, 20px);
-      line-height: 2;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 28px;
-    }
-
-    .philosophy-content .journey-skills {
-      justify-content: center;
-      gap: 12px;
-    }
-
-    .philosophy-content .journey-skill {
-      background: rgba(244, 63, 94, 0.18);
-      border-color: rgba(244, 63, 94, 0.4);
-      color: var(--text-primary);
-      font-weight: 600;
-      padding: 10px 22px;
-      font-size: 13px;
-    }
-
-    .philosophy-content .journey-skill:hover {
-      background: rgba(244, 63, 94, 0.35);
-      transform: translateY(-2px);
-      transition: all 0.3s ease;
-    }
-
-    @media (max-width: 720px) {
-      .journey-timeline::before {
-        right: 16px;
-      }
-
-      .journey-card {
-        grid-template-columns: 50px 1fr;
-        gap: 16px;
-      }
-
-      .journey-icon {
-        width: 44px;
-        height: 44px;
-      }
-
-      .journey-icon i {
-        font-size: 18px;
-      }
+      border-color: var(--text-secondary);
     }
 
     @media (max-width: 1200px) {
@@ -1195,49 +961,56 @@
         display: flex;
       }
 
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .hero-content,
       .hero-visual {
-        grid-column: 1 / -1;
-      }
-
-      .work-preview,
-      .work-content {
-        grid-column: 1 / -1;
-      }
-
-      .bento-card {
-        grid-column: 1 / -1;
-      }
-
-      .video-card {
-        grid-column: 1 / -1;
-      }
-
-      .service-card {
-        grid-column: 1 / -1;
-      }
-
-      .contact-card,
-      .contact-links {
-        grid-column: 1 / -1;
+        grid-column: auto;
       }
     }
 
-    @media (max-width: 720px) {
-      .card-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
+    @media (max-width: 860px) {
       .back-to-top {
-        bottom: 20px;
-        right: 20px;
-        width: 48px;
-        height: 48px;
+        display: none;
+      }
+
+      .work-item:nth-child(-n+3) {
+        display: flex;
+      }
+
+      .works-list,
+      .bento,
+      .videos-grid,
+      .services-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .journey-content {
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-role {
+        display: none;
+      }
+
+      .hero-actions .btn {
+        flex: 1 1 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
       }
     }
   </style>
@@ -1258,16 +1031,16 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-        <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
-        <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
         <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
         <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
         <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+        <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
+        <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
         <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
       </nav>
       <div class="nav-actions">
         <button class="lang-btn" id="langToggle"><span>EN</span></button>
-        <a class="cta-link" href="https://wa.me/972568802803" target="_blank" data-ar="لنعمل معاً" data-en="Let's Work">
+        <a class="cta-link" href="https://wa.me/972568802803" target="_blank">
           <span data-ar="لنعمل معاً" data-en="Let's Work">لنعمل معاً</span>
           <i class="ti ti-arrow-up-right"></i>
         </a>
@@ -1282,11 +1055,11 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-    <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
-    <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
     <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
     <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
     <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
+    <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
+    <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
     <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
     <button class="lang-btn" id="mobileLangToggle"><span>EN</span></button>
   </div>
@@ -1329,11 +1102,11 @@
             </div>
           </div>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#works" data-ar="شوف أعمالي" data-en="View Works">
+            <a class="btn btn-primary" href="#works">
               <span data-ar="شوف أعمالي" data-en="View Works">شوف أعمالي</span>
               <i class="ti ti-arrow-down-right"></i>
             </a>
-            <a class="btn btn-ghost" href="#contact" data-ar="تواصل معي" data-en="Contact Me">
+            <a class="btn btn-ghost" href="#contact">
               <span data-ar="تواصل معي" data-en="Contact Me">تواصل معي</span>
               <i class="ti ti-send"></i>
             </a>
@@ -1347,22 +1120,21 @@
                   <div class="card-title" data-ar="نبذة سريعة" data-en="Quick Stats">نبذة سريعة</div>
                   <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="ملخص عني في نظرة واحدة" data-en="Quick overview">ملخص عني في نظرة واحدة</p>
                 </div>
-                <span class="meta-pill" data-ar="متاح للعمل الحر" data-en="Available for hire">متاح للعمل الحر</span>
               </div>
               <div class="card-list">
-                <div class="card-item">
-                  <span class="card-label" data-ar="العمر" data-en="Age">العمر</span>
-                  <span class="card-value" data-ar="20 سنة" data-en="20 years">20 سنة</span>
+                <div class="card-item stat">
+                  <span class="card-label" data-ar="مشاريع مختارة" data-en="Selected projects">مشاريع مختارة</span>
+                  <span class="card-value">9</span>
                 </div>
-                <div class="card-item">
-                  <span class="card-label" data-ar="الدراسة" data-en="Education">الدراسة</span>
-                  <span class="card-value" data-ar="هندسة - السنة الثانية" data-en="Engineering - 2nd year">هندسة - السنة الثانية</span>
+                <div class="card-item stat">
+                  <span class="card-label" data-ar="بروابط مباشرة" data-en="With live links">بروابط مباشرة</span>
+                  <span class="card-value">6</span>
                 </div>
-                <div class="card-item">
+                <div class="card-item wide">
                   <span class="card-label" data-ar="التخصص" data-en="Focus">التخصص</span>
                   <span class="card-value" data-ar="Full-Stack + Automation" data-en="Full-Stack + Automation">Full-Stack + Automation</span>
                 </div>
-                <div class="card-item">
+                <div class="card-item wide">
                   <span class="card-label" data-ar="التركيز" data-en="Specialty">التركيز</span>
                   <span class="card-value" data-ar="Backend • Security • UX" data-en="Backend • Security • UX">Backend • Security • UX</span>
                 </div>
@@ -1372,267 +1144,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="about">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-kicker">
-            <span class="kicker-line"></span>
-            <span data-ar="ABOUT ME" data-en="ABOUT ME">ABOUT ME</span>
-            <span class="kicker-line"></span>
-          </div>
-          <div class="section-title">
-            <span data-ar="من" data-en="WHO">من</span>
-            <span class="gradient" data-ar="أكون" data-en="AM I">أكون</span>
-          </div>
-          <p class="section-lead" data-ar="أؤمن بأن كل فكرة تستحق أن تتحول لحل عملي، أنيق، وآمن. أعمل على تحويل المتطلبات لمنتجات رقمية جاهزة فعلاً، مع اهتمام بالغ بالتفاصيل وأعلى معايير الجودة" data-en="I believe every idea deserves to become a practical, elegant, and secure solution. I turn requirements into production-ready digital products with attention to detail and the highest quality standards">
-            أؤمن بأن كل فكرة تستحق أن تتحول لحل عملي، أنيق، وآمن. أعمل على تحويل المتطلبات لمنتجات رقمية جاهزة فعلاً، مع اهتمام بالغ بالتفاصيل وأعلى معايير الجودة
-          </p>
-        </div>
-        <div class="bento">
-          <article class="bento-card">
-            <div class="bento-card-inner">
-              <div class="bento-header">
-                <div>
-                  <h3 class="bento-title" data-ar="قصتي" data-en="My Story">قصتي</h3>
-                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="كيف بدأت وما أُركز عليه" data-en="How I started and what I focus on">كيف بدأت وما أُركز عليه</p>
-                </div>
-                <i class="ti ti-user-hexagon" style="font-size: 30px; color: var(--text-tertiary);"></i>
-              </div>
-              <p style="color: var(--text-secondary);" data-ar="اسمي إبراهيم خلف، طالب هندسة من غزة أحب التقنية منذ الصغر. أتعلم بالممارسة، وأبني مشاريع حقيقية لحل مشاكل واقعية. أعمل كمطور مستقل وأقود فريقاً صغيراً لتنفيذ المشاريع الكبيرة بكفاءة عالية" data-en="My name is Ibrahim Khalaf, an engineering student from Gaza passionate about tech since childhood. I learn by doing, building real projects that solve real problems. I work as a freelance developer and lead a small team to execute large projects efficiently">
-                اسمي إبراهيم خلف، طالب هندسة من غزة أحب التقنية منذ الصغر. أتعلم بالممارسة، وأبني مشاريع حقيقية لحل مشاكل واقعية. أعمل كمطور مستقل وأقود فريقاً صغيراً لتنفيذ المشاريع الكبيرة بكفاءة عالية
-              </p>
-            </div>
-          </article>
-          <article class="bento-card">
-            <div class="bento-card-inner">
-              <div class="bento-header">
-                <div>
-                  <h3 class="bento-title" data-ar="قيمي" data-en="My Values">قيمي</h3>
-                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="ما ألتزم به في كل مشروع" data-en="What I commit to in every project">ما ألتزم به في كل مشروع</p>
-                </div>
-                <i class="ti ti-shield-check" style="font-size: 30px; color: var(--text-tertiary);"></i>
-              </div>
-              <div class="tag-grid">
-                <span class="tag" data-ar="الجودة أولاً" data-en="Quality First">الجودة أولاً</span>
-                <span class="tag" data-ar="الأمان والخصوصية" data-en="Security & Privacy">الأمان والخصوصية</span>
-                <span class="tag" data-ar="حلول عملية" data-en="Practical Solutions">حلول عملية</span>
-                <span class="tag" data-ar="تسليم دقيق" data-en="Precise Delivery">تسليم دقيق</span>
-                <span class="tag" data-ar="وضوح كامل" data-en="Full Transparency">وضوح كامل</span>
-                <span class="tag" data-ar="تركيز على النتيجة" data-en="Results Driven">تركيز على النتيجة</span>
-              </div>
-            </div>
-          </article>
-          <article class="bento-card large">
-            <div class="bento-card-inner">
-              <div class="bento-header">
-                <div>
-                  <h3 class="bento-title" data-ar="مهاراتي التقنية" data-en="Technical Skills">مهاراتي التقنية</h3>
-                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="الأدوات والتقنيات اللي أستخدمها يومياً" data-en="Tools and technologies I use daily">الأدوات والتقنيات اللي أستخدمها يومياً</p>
-                </div>
-                <i class="ti ti-code-dots" style="font-size: 30px; color: var(--text-tertiary);"></i>
-              </div>
-              <div class="tag-grid">
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-                <span class="tag">HTML5 / CSS3</span>
-                <span class="tag">SQL</span>
-                <span class="tag">FastAPI</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Firebase</span>
-                <span class="tag">Capacitor</span>
-                <span class="tag">PWA</span>
-                <span class="tag">REST APIs</span>
-                <span class="tag">Telegram Bots</span>
-                <span class="tag">Automation</span>
-                <span class="tag">Git & GitHub</span>
-                <span class="tag">GitHub Actions</span>
-                <span class="tag" data-ar="Security Focused" data-en="Security Focused">Security Focused</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="journey">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-kicker">
-            <span class="kicker-line"></span>
-            <span data-ar="MY JOURNEY" data-en="MY JOURNEY">MY JOURNEY</span>
-            <span class="kicker-line"></span>
-          </div>
-          <div class="section-title">
-            <span data-ar="رحلتي" data-en="MY">رحلتي</span>
-            <span class="gradient" data-ar="في الحياة" data-en="PATH">في الحياة</span>
-          </div>
-          <p class="section-lead" data-ar="محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً" data-en="Stations that shaped me, from childhood to code, every experience added something">
-            محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً
-          </p>
-        </div>
-        <div class="journey-timeline">
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
-                <i class="ti ti-building-castle" style="font-size: 22px;"></i>
-              </div>
-              <div class="journey-line"></div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="الطفولة" data-en="Childhood">الطفولة</div>
-              <h3 class="journey-title" data-ar="بقطان" data-en="Baqtan">بقطان</h3>
-              <p class="journey-desc" data-ar="بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا" data-en="My first beginning, learned basics of discipline and memorization, seeds of character grew from here">
-                بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="انضباط" data-en="Discipline">انضباط</span>
-                <span class="journey-skill" data-ar="حفظ" data-en="Memorization">حفظ</span>
-                <span class="journey-skill" data-ar="أساسيات" data-en="Fundamentals">أساسيات</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
-                <i class="ti ti-pencil" style="font-size: 22px;"></i>
-              </div>
-              <div class="journey-line"></div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="مرحلة مبكرة" data-en="Early Stage">مرحلة مبكرة</div>
-              <h3 class="journey-title" data-ar="أنامل" data-en="Anamil">أنامل</h3>
-              <p class="journey-desc" data-ar="تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار" data-en="Developed writing and creativity skills, discovered passion for expression and building ideas">
-                تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="كتابة" data-en="Writing">كتابة</span>
-                <span class="journey-skill" data-ar="إبداع" data-en="Creativity">إبداع</span>
-                <span class="journey-skill" data-ar="تعبير" data-en="Expression">تعبير</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #8b5cf6, #a855f7);">
-                <i class="ti ti-school" style="font-size: 22px;"></i>
-              </div>
-              <div class="journey-line"></div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="تعليم" data-en="Education">تعليم</div>
-              <h3 class="journey-title" data-ar="الامديست (AMIDEAST)" data-en="AMIDEAST">الامديست</h3>
-              <p class="journey-desc" data-ar="برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية" data-en="Advanced training programs, English language, leadership skills, opened global horizons">
-                برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="English" data-en="English">English</span>
-                <span class="journey-skill" data-ar="Leadership" data-en="Leadership">Leadership</span>
-                <span class="journey-skill" data-ar="Global Mindset" data-en="Global Mindset">Global Mindset</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
-                <i class="ti ti-gamepad" style="font-size: 22px;"></i>
-              </div>
-              <div class="journey-line"></div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="شغف الألعاب" data-en="Gaming Era">شغف الألعاب</div>
-              <h3 class="journey-title" data-ar="نادي فورسيه (Forsia)" data-en="Forsia Club">نادي فورسيه</h3>
-              <p class="journey-desc" data-ar="مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط" data-en="Competitive gaming community, learned strategy, teamwork, and quick thinking under pressure">
-                مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="Strategy" data-en="Strategy">Strategy</span>
-                <span class="journey-skill" data-ar="Teamwork" data-en="Teamwork">Teamwork</span>
-                <span class="journey-skill" data-ar="Quick Thinking" data-en="Quick Thinking">Quick Thinking</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #22d3ee, #06b6d4);">
-                <i class="ti ti-trophy" style="font-size: 22px;"></i>
-              </div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="إنجاز" data-en="Achievement">إنجاز</div>
-              <h3 class="journey-title" data-ar="بطل فورت نايت" data-en="Fortnite Champion">بطل فورت نايت</h3>
-              <p class="journey-desc" data-ar="حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم" data-en="Achieved tournaments and high ranks, taught me perseverance, analysis, and that loss is just a lesson for the next win">
-                حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="Perseverance" data-en="Perseverance">Perseverance</span>
-                <span class="journey-skill" data-ar="Analysis" data-en="Analysis">Analysis</span>
-                <span class="journey-skill" data-ar="Competitive" data-en="Competitive">Competitive</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #a855f7, #ec4899);">
-                <i class="ti ti-app-window" style="font-size: 22px;"></i>
-              </div>
-              <div class="journey-line"></div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="انطلاق المشروع" data-en="Project Launch">انطلاق المشروع</div>
-              <h3 class="journey-title" data-ar="تطبيق الجم وفصله" data-en="Al-Jam wa Faslah App">تطبيق الجم وفصله</h3>
-              <p class="journey-desc" data-ar="بعد انضمامي لجماعة تقنية، اكتشفت شغفي بالتقنيع وبنيت تطبيقي الخاص لإدارة الجماعات والفصل الآلي — حالياً يخدم 9 عملاء باشتراك شهري، وهو مشروعي الثالث الناجح بعد فترة من التعلم والتجربة" data-en="After joining a tech collective, discovered passion for Taqni' and built my own app for group management and automated splitting — currently serving 9 monthly subscription clients, my 3rd successful project after a period of learning and experimentation">
-                بعد انضمامي لجماعة تقنية، اكتشفت شغفي بالتقنيع وبنيت تطبيقي الخاص لإدارة الجماعات والفصل الآلي — حالياً يخدم 9 عملاء باشتراك شهري، وهو مشروعي الثالث الناجح بعد فترة من التعلم والتجربة
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="تقنيع" data-en="Taqni">تقنيع</span>
-                <span class="journey-skill" data-ar="9 عملاء شهري" data-en="9 Monthly Clients">9 عملاء شهري</span>
-                <span class="journey-skill" data-ar="مشروع ناجح #3" data-en="Success #3">مشروع ناجح #3</span>
-                <span class="journey-skill" data-ar="SaaS" data-en="SaaS">SaaS</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #22c55e, #16a34a);">
-                <i class="ti ti-code" style="font-size: 22px;"></i>
-              </div>
-            </div>
-            <div class="journey-content">
-              <div class="journey-year" data-ar="الحاضر" data-en="Present">الحاضر</div>
-              <h3 class="journey-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer">مطور Full-Stack</h3>
-              <p class="journey-desc" data-ar="جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية" data-en="Combined all experiences: Baqtan's discipline, Anamil's creativity, AMIDEAST's global view, Forsia's strategy, Fortnite's competition — into code that solves real problems">
-                جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="Full-Stack" data-en="Full-Stack">Full-Stack</span>
-                <span class="journey-skill" data-ar="Problem Solving" data-en="Problem Solving">Problem Solving</span>
-                <span class="journey-skill" data-ar="Builder" data-en="Builder">Builder</span>
-              </div>
-            </div>
-          </article>
-          <article class="journey-card philosophy-card">
-            <div class="journey-marker">
-              <div class="journey-icon" style="background: linear-gradient(135deg, #f43f5e, #ec4899, #a855f7, #22d3ee);">
-                <i class="ti ti-heart" style="font-size: 22px;"></i>
-              </div>
-            </div>
-            <div class="journey-content philosophy-content">
-              <div class="journey-year" data-ar="فلسفتي" data-en="My Philosophy">فلسفتي</div>
-              <h3 class="journey-title" data-ar="شغوف بالحياة" data-en="Passionate About Life">شغوف بالحياة</h3>
-              <p class="journey-desc" data-ar="أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة" data-en="I'm deeply passionate about life — I strive to achieve every dream, no matter how big. Every station taught me that impossible is just an opinion, and passion with persistence creates miracles. I don't give up, I don't stop, I keep moving forward with love and determination">
-                أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة
-              </p>
-              <div class="journey-skills">
-                <span class="journey-skill" data-ar="شغوف" data-en="Passionate">شغوف</span>
-                <span class="journey-skill" data-ar="حالم" data-en="Dreamer">حالم</span>
-                <span class="journey-skill" data-ar="مثابر" data-en="Persistent">مثابر</span>
-                <span class="journey-skill" data-ar="لا أستسلم" data-en="Never Give Up">لا أستسلم</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div    </section>
 
     <section class="section" id="works">
       <div class="section-inner">
@@ -1652,15 +1163,9 @@
         </div>
         <div class="works-list">
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://image.thum.io/get/width/2000/https://ibrheamkhalaf88-collab.github.io/GymOS/" alt="GymOS">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://ibrheamkhalaf88-collab.github.io/GymOS/" target="_blank" rel="noopener" aria-label="GymOS">
+              <img src="images/gymos.jpg" alt="GymOS" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">01 / GYMOS</span>
               <h3 class="work-title" data-ar="GYM OS" data-en="GYM OS">GYM OS</h3>
@@ -1674,11 +1179,11 @@
                 <span class="work-tag">PWA</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/GymOS/" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/GymOS/" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/GymOS" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/GymOS" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1686,15 +1191,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://image.thum.io/get/width/2000/https://ibrheamkhalaf88-collab.github.io/FocusStudy/" alt="FocusStudy">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://ibrheamkhalaf88-collab.github.io/FocusStudy/" target="_blank" rel="noopener" aria-label="FocusStudy">
+              <img src="images/focusstudy.jpg" alt="FocusStudy" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">02 / FOCUSSTUDY</span>
               <h3 class="work-title" data-ar="FOCUS STUDY" data-en="FOCUS STUDY">FOCUS STUDY</h3>
@@ -1708,11 +1207,11 @@
                 <span class="work-tag">PWA</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/FocusStudy/" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/FocusStudy/" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/FocusStudy" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/FocusStudy" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1720,15 +1219,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://image.thum.io/get/width/2000/https://ibrheamkhalaf88-collab.github.io/SplitEase/" alt="SplitEase">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://ibrheamkhalaf88-collab.github.io/SplitEase/" target="_blank" rel="noopener" aria-label="SplitEase">
+              <img src="images/splitease.jpg" alt="SplitEase" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">03 / SPLITEASE</span>
               <h3 class="work-title" data-ar="SPLIT EASE" data-en="SPLIT EASE">SPLIT EASE</h3>
@@ -1742,11 +1235,11 @@
                 <span class="work-tag">Realtime</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/SplitEase/" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/SplitEase/" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/SplitEase" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/SplitEase" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1754,15 +1247,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://image.thum.io/get/width/2000/https://ibrheamkhalaf88-collab.github.io/ibrheam-freelance/" alt="Freelance Landing">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://ibrheamkhalaf88-collab.github.io/ibrheam-freelance/" target="_blank" rel="noopener" aria-label="Freelance Landing">
+              <img src="images/freelance.jpg" alt="Freelance Landing" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">04 / FREELANCE LANDING</span>
               <h3 class="work-title" data-ar="FREELANCE HUB" data-en="FREELANCE HUB">FREELANCE HUB</h3>
@@ -1775,11 +1262,11 @@
                 <span class="work-tag">Responsive</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/ibrheam-freelance/" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://ibrheamkhalaf88-collab.github.io/ibrheam-freelance/" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/ibrheam-freelance" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/ibrheam-freelance" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1787,15 +1274,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/jamra" alt="Jamrah">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://jamra.ibrheamshady.workers.dev" target="_blank" rel="noopener" aria-label="Jamrah">
+              <img src="images/jamrah.jpg" alt="Jamrah" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">05 / JAMRAH</span>
               <h3 class="work-title" data-ar="JAMRAH" data-en="JAMRAH">JAMRAH</h3>
@@ -1809,26 +1290,21 @@
                 <span class="work-tag">Tailwind</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://jamra.ibrheamshady.workers.dev" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://jamra.ibrheamshady.workers.dev" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/jamra" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/jamra" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
               </div>
-            </div          </article>
-          <article class="work-item">
-            <div class="work-preview">
-              <img src="https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/telegram-order-bot" alt="Telegram Order Bot">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
             </div>
+          </article>
+          <article class="work-item">
+            <a class="work-preview" href="https://github.com/ibrheamkhalaf88-collab/telegram-order-bot" target="_blank" rel="noopener" aria-label="Telegram Order Bot">
+              <div class="work-panel"><i class="ti ti-brand-telegram"></i><span>Telegram Bot</span></div>
+            </a>
             <div class="work-content">
               <span class="work-index">06 / TELEGRAM ORDER BOT</span>
               <h3 class="work-title" data-ar="TELEGRAM ORDER BOT" data-en="TELEGRAM ORDER BOT">TELEGRAM ORDER BOT</h3>
@@ -1842,7 +1318,7 @@
                 <span class="work-tag">Docker</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/telegram-order-bot" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/telegram-order-bot" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1850,15 +1326,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/sallaq-pharmacy" alt="Sallaq Pharmacy">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://github.com/ibrheamkhalaf88-collab/sallaq-pharmacy" target="_blank" rel="noopener" aria-label="Sallaq Pharmacy">
+              <div class="work-panel"><i class="ti ti-building-hospital"></i><span>Pharmacy System</span></div>
+            </a>
             <div class="work-content">
               <span class="work-index">07 / SALLAQ PHARMACY</span>
               <h3 class="work-title" data-ar="SALLAQ PHARMACY" data-en="SALLAQ PHARMACY">SALLAQ PHARMACY</h3>
@@ -1872,7 +1342,7 @@
                 <span class="work-tag">RTL</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/sallaq-pharmacy" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/sallaq-pharmacy" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1880,15 +1350,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://opengraph.githubassets.com/1/ibrheamkhalaf88-collab/pharmacy-site" alt="Pharmacy Site">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://github.com/ibrheamkhalaf88-collab/pharmacy-site" target="_blank" rel="noopener" aria-label="Pharmacy Site">
+              <div class="work-panel"><i class="ti ti-pill"></i><span>Pharmacy Website</span></div>
+            </a>
             <div class="work-content">
               <span class="work-index">08 / PHARMACY SITE</span>
               <h3 class="work-title" data-ar="PHARMACY SITE" data-en="PHARMACY SITE">PHARMACY SITE</h3>
@@ -1902,7 +1366,7 @@
                 <span class="work-tag">Responsive</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/pharmacy-site" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/pharmacy-site" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1910,15 +1374,9 @@
             </div>
           </article>
           <article class="work-item">
-            <div class="work-preview">
-              <img src="https://image.thum.io/get/width/2000/https://beauty-zone-sepia.vercel.app" alt="Beauty Zone">
-              <div class="work-preview-overlay">
-                <span data-ar="عرض المشروع" data-en="View Project">
-                  <span data-ar="عرض المشروع" data-en="View Project">عرض المشروع</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </span>
-              </div>
-            </div>
+            <a class="work-preview" href="https://beauty-zone-sepia.vercel.app" target="_blank" rel="noopener" aria-label="Beauty Zone">
+              <img src="images/beautyzone.jpg" alt="Beauty Zone" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
             <div class="work-content">
               <span class="work-index">09 / BEAUTY ZONE</span>
               <h3 class="work-title" data-ar="BEAUTY ZONE" data-en="BEAUTY ZONE">BEAUTY ZONE</h3>
@@ -1932,11 +1390,11 @@
                 <span class="work-tag">RTL</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://beauty-zone-sepia.vercel.app" target="_blank" data-ar="عرض مباشر" data-en="Live Preview">
+                <a class="work-link" href="https://beauty-zone-sepia.vercel.app" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/beauty-zoon" target="_blank" data-ar="كود المشروع" data-en="Source Code">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/beauty-zoon" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -2101,6 +1559,278 @@
       </div>
     </section>
 
+    <section class="section" id="about">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="kicker-line"></span>
+            <span data-ar="ABOUT ME" data-en="ABOUT ME">ABOUT ME</span>
+            <span class="kicker-line"></span>
+          </div>
+          <div class="section-title">
+            <span data-ar="من" data-en="WHO">من</span>
+            <span class="gradient" data-ar="أكون" data-en="AM I">أكون</span>
+          </div>
+          <p class="section-lead" data-ar="أؤمن بأن كل فكرة تستحق أن تتحول لحل عملي، أنيق، وآمن. أعمل على تحويل المتطلبات لمنتجات رقمية جاهزة فعلاً، مع اهتمام بالغ بالتفاصيل وأعلى معايير الجودة" data-en="I believe every idea deserves to become a practical, elegant, and secure solution. I turn requirements into production-ready digital products with attention to detail and the highest quality standards">
+            أؤمن بأن كل فكرة تستحق أن تتحول لحل عملي، أنيق، وآمن. أعمل على تحويل المتطلبات لمنتجات رقمية جاهزة فعلاً، مع اهتمام بالغ بالتفاصيل وأعلى معايير الجودة
+          </p>
+        </div>
+        <div class="bento">
+          <article class="bento-card">
+            <div class="bento-card-inner">
+              <div class="bento-header">
+                <div>
+                  <h3 class="bento-title" data-ar="قصتي" data-en="My Story">قصتي</h3>
+                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="كيف بدأت وما أُركز عليه" data-en="How I started and what I focus on">كيف بدأت وما أُركز عليه</p>
+                </div>
+                <i class="ti ti-user-hexagon" style="font-size: 30px; color: var(--text-tertiary);"></i>
+              </div>
+              <p style="color: var(--text-secondary);" data-ar="اسمي إبراهيم خلف، طالب هندسة من غزة أحب التقنية منذ الصغر. أتعلم بالممارسة، وأبني مشاريع حقيقية لحل مشاكل واقعية. أعمل كمطور مستقل وأقود فريقاً صغيراً لتنفيذ المشاريع الكبيرة بكفاءة عالية" data-en="My name is Ibrahim Khalaf, an engineering student from Gaza passionate about tech since childhood. I learn by doing, building real projects that solve real problems. I work as a freelance developer and lead a small team to execute large projects efficiently">
+                اسمي إبراهيم خلف، طالب هندسة من غزة أحب التقنية منذ الصغر. أتعلم بالممارسة، وأبني مشاريع حقيقية لحل مشاكل واقعية. أعمل كمطور مستقل وأقود فريقاً صغيراً لتنفيذ المشاريع الكبيرة بكفاءة عالية
+              </p>
+              <div class="card-list">
+                <div class="card-item">
+                  <span class="card-label" data-ar="العمر" data-en="Age">العمر</span>
+                  <span class="card-value" data-ar="20 سنة" data-en="20 years">20 سنة</span>
+                </div>
+                <div class="card-item">
+                  <span class="card-label" data-ar="الدراسة" data-en="Education">الدراسة</span>
+                  <span class="card-value" data-ar="هندسة - السنة الثانية" data-en="Engineering - 2nd year">هندسة - السنة الثانية</span>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="bento-card">
+            <div class="bento-card-inner">
+              <div class="bento-header">
+                <div>
+                  <h3 class="bento-title" data-ar="قيمي" data-en="My Values">قيمي</h3>
+                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="ما ألتزم به في كل مشروع" data-en="What I commit to in every project">ما ألتزم به في كل مشروع</p>
+                </div>
+                <i class="ti ti-shield-check" style="font-size: 30px; color: var(--text-tertiary);"></i>
+              </div>
+              <div class="tag-grid">
+                <span class="tag" data-ar="الجودة أولاً" data-en="Quality First">الجودة أولاً</span>
+                <span class="tag" data-ar="الأمان والخصوصية" data-en="Security & Privacy">الأمان والخصوصية</span>
+                <span class="tag" data-ar="حلول عملية" data-en="Practical Solutions">حلول عملية</span>
+                <span class="tag" data-ar="تسليم دقيق" data-en="Precise Delivery">تسليم دقيق</span>
+                <span class="tag" data-ar="وضوح كامل" data-en="Full Transparency">وضوح كامل</span>
+                <span class="tag" data-ar="تركيز على النتيجة" data-en="Results Driven">تركيز على النتيجة</span>
+              </div>
+            </div>
+          </article>
+          <article class="bento-card large">
+            <div class="bento-card-inner">
+              <div class="bento-header">
+                <div>
+                  <h3 class="bento-title" data-ar="مهاراتي التقنية" data-en="Technical Skills">مهاراتي التقنية</h3>
+                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="الأدوات والتقنيات اللي أستخدمها يومياً" data-en="Tools and technologies I use daily">الأدوات والتقنيات اللي أستخدمها يومياً</p>
+                </div>
+                <i class="ti ti-code-dots" style="font-size: 30px; color: var(--text-tertiary);"></i>
+              </div>
+              <div class="tag-grid">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Python</span>
+                <span class="tag">HTML5 / CSS3</span>
+                <span class="tag">SQL</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Firebase</span>
+                <span class="tag">Capacitor</span>
+                <span class="tag">PWA</span>
+                <span class="tag">REST APIs</span>
+                <span class="tag">Telegram Bots</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Git & GitHub</span>
+                <span class="tag">GitHub Actions</span>
+                <span class="tag" data-ar="Security Focused" data-en="Security Focused">Security Focused</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="section-inner">
+        <div class="section-header">
+          <div class="section-kicker">
+            <span class="kicker-line"></span>
+            <span data-ar="MY JOURNEY" data-en="MY JOURNEY">MY JOURNEY</span>
+            <span class="kicker-line"></span>
+          </div>
+          <div class="section-title">
+            <span data-ar="رحلتي" data-en="MY">رحلتي</span>
+            <span class="gradient" data-ar="في الحياة" data-en="PATH">في الحياة</span>
+          </div>
+          <p class="section-lead" data-ar="محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً" data-en="Stations that shaped me, from childhood to code, every experience added something">
+            محطات صنعتني، من الطفولة للكود، كل تجربة أضافت لي شيئاً
+          </p>
+        </div>
+        <div class="journey-timeline">
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-building-castle" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="الطفولة" data-en="Childhood">الطفولة</div>
+              <h3 class="journey-title" data-ar="بقطان" data-en="Baqtan">بقطان</h3>
+              <p class="journey-desc" data-ar="بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا" data-en="My first beginning, learned basics of discipline and memorization, seeds of character grew from here">
+                بدايتي الأولى، تعلمت أساسيات الانضباط والحفظ، بذور الشخصية نمت من هنا
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="انضباط" data-en="Discipline">انضباط</span>
+                <span class="journey-skill" data-ar="حفظ" data-en="Memorization">حفظ</span>
+                <span class="journey-skill" data-ar="أساسيات" data-en="Fundamentals">أساسيات</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-pencil" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="مرحلة مبكرة" data-en="Early Stage">مرحلة مبكرة</div>
+              <h3 class="journey-title" data-ar="أنامل" data-en="Anamil">أنامل</h3>
+              <p class="journey-desc" data-ar="تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار" data-en="Developed writing and creativity skills, discovered passion for expression and building ideas">
+                تطوير مهارات الكتابة والإبداع، اكتشفت شغفي بالتعبير وبناء الأفكار
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="كتابة" data-en="Writing">كتابة</span>
+                <span class="journey-skill" data-ar="إبداع" data-en="Creativity">إبداع</span>
+                <span class="journey-skill" data-ar="تعبير" data-en="Expression">تعبير</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-school" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="تعليم" data-en="Education">تعليم</div>
+              <h3 class="journey-title" data-ar="الامديست (AMIDEAST)" data-en="AMIDEAST">الامديست</h3>
+              <p class="journey-desc" data-ar="برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية" data-en="Advanced training programs, English language, leadership skills, opened global horizons">
+                برامج تدريبية متقدمة، لغة إنجليزية، مهارات قيادية، وفتحت لي آفاق عالمية
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="English" data-en="English">English</span>
+                <span class="journey-skill" data-ar="Leadership" data-en="Leadership">Leadership</span>
+                <span class="journey-skill" data-ar="Global Mindset" data-en="Global Mindset">Global Mindset</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-gamepad" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="شغف الألعاب" data-en="Gaming Era">شغف الألعاب</div>
+              <h3 class="journey-title" data-ar="نادي فورسيه (Forsia)" data-en="Forsia Club">نادي فورسيه</h3>
+              <p class="journey-desc" data-ar="مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط" data-en="Competitive gaming community, learned strategy, teamwork, and quick thinking under pressure">
+                مجتمع ألعاب تنافسية، تعلمت الاستراتيجية، العمل الجماعي، والتفكير السريع تحت الضغط
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Strategy" data-en="Strategy">Strategy</span>
+                <span class="journey-skill" data-ar="Teamwork" data-en="Teamwork">Teamwork</span>
+                <span class="journey-skill" data-ar="Quick Thinking" data-en="Quick Thinking">Quick Thinking</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-trophy" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="إنجاز" data-en="Achievement">إنجاز</div>
+              <h3 class="journey-title" data-ar="بطل فورت نايت" data-en="Fortnite Champion">بطل فورت نايت</h3>
+              <p class="journey-desc" data-ar="حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم" data-en="Achieved tournaments and high ranks, taught me perseverance, analysis, and that loss is just a lesson for the next win">
+                حققت بطولات ومراتب متقدمة، علمتني المثابرة، التحليل، وأن الخسارة مجرد درس للفوز القادم
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Perseverance" data-en="Perseverance">Perseverance</span>
+                <span class="journey-skill" data-ar="Analysis" data-en="Analysis">Analysis</span>
+                <span class="journey-skill" data-ar="Competitive" data-en="Competitive">Competitive</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-app-window" style="font-size: 22px;"></i>
+              </div>
+              <div class="journey-line"></div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="انطلاق المشروع" data-en="Project Launch">انطلاق المشروع</div>
+              <h3 class="journey-title" data-ar="تطبيق الجم وفصله" data-en="Al-Jam wa Faslah App">تطبيق الجم وفصله</h3>
+              <p class="journey-desc" data-ar="بعد انضمامي لجماعة تقنية، اكتشفت شغفي بالتقنيع وبنيت تطبيقي الخاص لإدارة الجماعات والفصل الآلي — حالياً يخدم 9 عملاء باشتراك شهري، وهو مشروعي الثالث الناجح بعد فترة من التعلم والتجربة" data-en="After joining a tech collective, discovered passion for Taqni' and built my own app for group management and automated splitting — currently serving 9 monthly subscription clients, my 3rd successful project after a period of learning and experimentation">
+                بعد انضمامي لجماعة تقنية، اكتشفت شغفي بالتقنيع وبنيت تطبيقي الخاص لإدارة الجماعات والفصل الآلي — حالياً يخدم 9 عملاء باشتراك شهري، وهو مشروعي الثالث الناجح بعد فترة من التعلم والتجربة
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="تقنيع" data-en="Taqni">تقنيع</span>
+                <span class="journey-skill" data-ar="9 عملاء شهري" data-en="9 Monthly Clients">9 عملاء شهري</span>
+                <span class="journey-skill" data-ar="مشروع ناجح #3" data-en="Success #3">مشروع ناجح #3</span>
+                <span class="journey-skill" data-ar="SaaS" data-en="SaaS">SaaS</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-code" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content">
+              <div class="journey-year" data-ar="الحاضر" data-en="Present">الحاضر</div>
+              <h3 class="journey-title" data-ar="مطور Full-Stack" data-en="Full-Stack Developer">مطور Full-Stack</h3>
+              <p class="journey-desc" data-ar="جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية" data-en="Combined all experiences: Baqtan's discipline, Anamil's creativity, AMIDEAST's global view, Forsia's strategy, Fortnite's competition — into code that solves real problems">
+                جمعت كل الخبرات: انضباط بقطان، إبداع أنامل، عالمية الامديست، استراتيجية فورسيه، منافسة فورت نايت — في كود يحل مشاكل حقيقية
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="Full-Stack" data-en="Full-Stack">Full-Stack</span>
+                <span class="journey-skill" data-ar="Problem Solving" data-en="Problem Solving">Problem Solving</span>
+                <span class="journey-skill" data-ar="Builder" data-en="Builder">Builder</span>
+              </div>
+            </div>
+          </article>
+          <article class="journey-card philosophy-card">
+            <div class="journey-marker">
+              <div class="journey-icon">
+                <i class="ti ti-heart" style="font-size: 22px;"></i>
+              </div>
+            </div>
+            <div class="journey-content philosophy-content">
+              <div class="journey-year" data-ar="فلسفتي" data-en="My Philosophy">فلسفتي</div>
+              <h3 class="journey-title" data-ar="شغوف بالحياة" data-en="Passionate About Life">شغوف بالحياة</h3>
+              <p class="journey-desc" data-ar="أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة" data-en="I'm deeply passionate about life — I strive to achieve every dream, no matter how big. Every station taught me that impossible is just an opinion, and passion with persistence creates miracles. I don't give up, I don't stop, I keep moving forward with love and determination">
+                أنا شخص جداً شغوف بالحياة، بأحاول أحقق كل أحلامي مهما كانت كبيرة. كل محطة مرت عليا علمتني إن المستحيل مجرد رأي، وإن الشغف مع المثابرة يصنع المعجزات. ما بستسلم، ما بوقف، وبكمل طريقي بكل حب وعزيمة
+              </p>
+              <div class="journey-skills">
+                <span class="journey-skill" data-ar="شغوف" data-en="Passionate">شغوف</span>
+                <span class="journey-skill" data-ar="حالم" data-en="Dreamer">حالم</span>
+                <span class="journey-skill" data-ar="مثابر" data-en="Persistent">مثابر</span>
+                <span class="journey-skill" data-ar="لا أستسلم" data-en="Never Give Up">لا أستسلم</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact" id="contact">
       <div class="section-inner">
         <div class="section-header">
@@ -2129,7 +1859,7 @@
                   جاهز لبدء مشروعك فوراً. أجيب بسرعة وأقدم عرض واضح مع خطة تنفيذ مباشرة
                 </p>
               </div>
-              <a class="btn btn-primary" href="https://wa.me/972568802803?text=مرحباً%20إبراهيم،%20أريد%20التحدث%20معك%20عن%20مشروع" target="_blank" data-ar="ابدأ محادثة عبر واتساب" data-en="Start WhatsApp Chat">
+              <a class="btn btn-primary" href="https://wa.me/972568802803?text=مرحباً%20إبراهيم،%20أريد%20التحدث%20معك%20عن%20مشروع" target="_blank">
                 <span data-ar="ابدأ محادثة عبر واتساب" data-en="Start WhatsApp Chat">ابدأ محادثة عبر واتساب</span>
                 <i class="ti ti-brand-whatsapp"></i>
               </a>
@@ -2195,37 +1925,37 @@
   </button>
 
   <script>
-    const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const lenis = new Lenis({ lerp: 0.12, smoothWheel: !reduceMotion });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.utils.toArray('.work-item').forEach((item) => {
-      gsap.from(item, {
-        opacity: 0,
-        y: 120,
-        duration: 1.4,
-        ease: 'power4.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%'
-        }
+    if (!reduceMotion) {
+      gsap.utils.toArray('.work-item, .bento-card, .video-card, .service-card').forEach((item) => {
+        gsap.from(item, {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 92%',
+            once: true
+          }
+        });
       });
-    });
+    }
 
-    gsap.utils.toArray('.bento-card, .video-card, .service-card').forEach((card) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: 80,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: card,
-          start: 'top 90%'
-        }
+    const navAnchors = document.querySelectorAll('.nav-links a, .mobile-menu a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
       });
-    });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    document.querySelectorAll('main section[id]').forEach((s) => sectionObserver.observe(s));
 
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
