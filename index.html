@@ -521,7 +521,7 @@
       gap: 20px;
     }
 
-    .work-item:nth-child(-n+3) {
+    .work-item:nth-child(n+3):nth-child(-n+5) {
       grid-column: 1 / -1;
       display: grid;
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -551,10 +551,6 @@
       object-fit: cover;
       object-position: top;
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .work-preview:hover img {
-      transform: scale(1.02);
     }
 
     .work-panel {
@@ -602,7 +598,7 @@
       overflow-wrap: anywhere;
     }
 
-    .work-item:nth-child(-n+3) .work-title {
+    .work-item:nth-child(-n+2) .work-title {
       font-size: clamp(26px, 3vw, 40px);
     }
 
@@ -767,62 +763,6 @@
       padding-top: 12px;
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .service-card {
-      min-width: 0;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      background: var(--surface);
-    }
-
-    .service-card.large {
-      grid-column: 1 / -1;
-    }
-
-    .service-card-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      height: 100%;
-      padding: clamp(24px, 3vw, 32px);
-    }
-
-    .service-title {
-      font-size: clamp(19px, 1.8vw, 22px);
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    .service-price {
-      direction: ltr;
-      text-align: end;
-      font-family: var(--mono);
-      font-size: clamp(24px, 2.4vw, 30px);
-      font-weight: 500;
-    }
-
-    [dir="ltr"] .service-price {
-      text-align: start;
-    }
-
-    .service-card.large .service-price {
-      font-family: var(--font);
-      direction: inherit;
-      text-align: start;
-    }
-
-    .service-list {
-      display: grid;
-      gap: 6px;
-      color: var(--text-secondary);
-      font-size: 15px;
-    }
-
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -951,6 +891,171 @@
       border-color: var(--text-secondary);
     }
 
+    .ti {
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .icons-ready .ti {
+      opacity: 1;
+    }
+
+    .scroll-progress {
+      position: absolute;
+      inset-inline: 0;
+      bottom: -1px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+    }
+
+    [dir="ltr"] .scroll-progress {
+      transform-origin: left;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-mask-image: linear-gradient(180deg, transparent 4%, #000 30%, #000 72%, transparent 100%);
+      mask-image: linear-gradient(180deg, transparent 4%, #000 30%, #000 72%, transparent 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title > div {
+      overflow: hidden;
+      padding-bottom: 0.04em;
+    }
+
+    .hero-title .char {
+      display: inline-block;
+    }
+
+    .vnum {
+      display: block;
+      height: clamp(76px, 7vw, 104px);
+      width: auto;
+      overflow: visible;
+      margin-inline-start: -0.4rem;
+    }
+
+    .vnum text {
+      font-family: var(--mono);
+      font-size: 78px;
+      font-weight: 500;
+      fill: var(--text-primary);
+      stroke: var(--accent);
+      stroke-width: 1.2;
+      paint-order: stroke;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      z-index: 2;
+      bottom: 20px;
+      left: 50%;
+      display: block;
+      width: 44px;
+      height: 52px;
+      margin-left: -22px;
+    }
+
+    .scroll-cue span {
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      width: 1px;
+      height: 44px;
+      background: var(--accent);
+      transform-origin: top;
+      animation: scroll-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+
+    @keyframes scroll-cue {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    .marquee {
+      direction: ltr;
+      overflow: hidden;
+      padding: clamp(18px, 2.4vw, 30px) 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+    }
+
+    .marquee-track span {
+      padding-inline-end: clamp(32px, 5vw, 72px);
+      font-family: var(--mono);
+      font-size: clamp(26px, 4vw, 54px);
+      font-weight: 500;
+      line-height: 1.2;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border-strong);
+    }
+
+    .journey-timeline {
+      position: relative;
+    }
+
+    .journey-progress {
+      position: absolute;
+      inset-block: 0;
+      inset-inline-end: 0;
+      width: 1px;
+      background: var(--accent);
+      transform-origin: top;
+      transform: scaleY(0);
+    }
+
+    .journey-content {
+      padding-inline-end: 20px;
+    }
+
+    .work-item:nth-child(-n+2) .work-preview {
+      aspect-ratio: 16 / 10;
+    }
+
+    .work-preview img {
+      will-change: transform;
+    }
+
+    @media (max-width: 1200px) {
+      .scroll-cue {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-cue span {
+        animation: none;
+        transform: none;
+      }
+
+      .journey-progress,
+      .scroll-progress {
+        display: none;
+      }
+    }
+
     @media (max-width: 1200px) {
       .nav-links,
       .cta-link {
@@ -980,14 +1085,13 @@
         display: none;
       }
 
-      .work-item:nth-child(-n+3) {
+      .work-item:nth-child(n+3):nth-child(-n+5) {
         display: flex;
       }
 
       .works-list,
       .bento,
       .videos-grid,
-      .services-grid,
       .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
@@ -1033,7 +1137,6 @@
         <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
         <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
         <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
-        <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
         <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
         <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
         <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
@@ -1051,13 +1154,13 @@
         </button>
       </div>
     </div>
+    <div class="scroll-progress" aria-hidden="true"></div>
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="#home" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
     <a href="#works" data-ar="الأعمال" data-en="Works">الأعمال</a>
     <a href="#videos" data-ar="الفيديوهات" data-en="Videos">الفيديوهات</a>
-    <a href="#services" data-ar="الخدمات" data-en="Services">الخدمات</a>
     <a href="#about" data-ar="نبذة عني" data-en="About">نبذة عني</a>
     <a href="#journey" data-ar="رحلتي" data-en="Journey">رحلتي</a>
     <a href="#contact" data-ar="تواصل" data-en="Contact">تواصل</a>
@@ -1066,6 +1169,8 @@
 
   <main>
     <section class="hero" id="home">
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <a class="scroll-cue" href="#works" aria-label="#works"><span></span></a>
       <div class="hero-inner">
         <div class="hero-content">
           <div class="hero-kicker">
@@ -1124,11 +1229,11 @@
               <div class="card-list">
                 <div class="card-item stat">
                   <span class="card-label" data-ar="مشاريع مختارة" data-en="Selected projects">مشاريع مختارة</span>
-                  <span class="card-value">9</span>
+                  <span class="card-value"><svg class="vnum" viewBox="0 0 64 84" role="img" aria-label="9"><text x="32" y="68" text-anchor="middle">9</text></svg></span>
                 </div>
                 <div class="card-item stat">
                   <span class="card-label" data-ar="بروابط مباشرة" data-en="With live links">بروابط مباشرة</span>
-                  <span class="card-value">6</span>
+                  <span class="card-value"><svg class="vnum" viewBox="0 0 64 84" role="img" aria-label="6"><text x="32" y="68" text-anchor="middle">6</text></svg></span>
                 </div>
                 <div class="card-item wide">
                   <span class="card-label" data-ar="التخصص" data-en="Focus">التخصص</span>
@@ -1144,6 +1249,10 @@
         </div>
       </div>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track"><span>JavaScript</span><span>Python</span><span>FastAPI</span><span>Supabase</span><span>Firebase</span><span>Capacitor</span><span>PWA</span><span>Telegram Bots</span><span>Automation</span><span>GitHub Actions</span><span>JavaScript</span><span>Python</span><span>FastAPI</span><span>Supabase</span><span>Firebase</span><span>Capacitor</span><span>PWA</span><span>Telegram Bots</span><span>Automation</span><span>GitHub Actions</span></div>
+    </div>
 
     <section class="section" id="works">
       <div class="section-inner">
@@ -1191,11 +1300,39 @@
             </div>
           </article>
           <article class="work-item">
+            <a class="work-preview" href="https://jamra.ibrheamshady.workers.dev" target="_blank" rel="noopener" aria-label="Jamrah">
+              <img src="images/jamrah.jpg" alt="Jamrah" width="1280" height="800" loading="lazy" decoding="async">
+            </a>
+            <div class="work-content">
+              <span class="work-index">02 / JAMRAH</span>
+              <h3 class="work-title" data-ar="JAMRAH" data-en="JAMRAH">JAMRAH</h3>
+              <p class="work-desc" data-ar="موقع فريق التسويق الرقمي الحديث مع Next.js و Cloudflare Workers، تصميم عصري وتجربة مستخدم فريدة" data-en="Modern digital marketing team website with Next.js and Cloudflare Workers, modern design and unique UX">
+                موقع فريق التسويق الرقمي الحديث مع Next.js و Cloudflare Workers، تصميم عصري وتجربة مستخدم فريدة
+              </p>
+              <div class="work-tags">
+                <span class="work-tag">Next.js</span>
+                <span class="work-tag">TypeScript</span>
+                <span class="work-tag">Cloudflare</span>
+                <span class="work-tag">Tailwind</span>
+              </div>
+              <div class="work-links">
+                <a class="work-link" href="https://jamra.ibrheamshady.workers.dev" target="_blank">
+                  <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
+                  <i class="ti ti-arrow-up-right"></i>
+                </a>
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/jamra" target="_blank">
+                  <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
+                  <i class="ti ti-brand-github"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="work-item">
             <a class="work-preview" href="https://ibrheamkhalaf88-collab.github.io/FocusStudy/" target="_blank" rel="noopener" aria-label="FocusStudy">
               <img src="images/focusstudy.jpg" alt="FocusStudy" width="1280" height="800" loading="lazy" decoding="async">
             </a>
             <div class="work-content">
-              <span class="work-index">02 / FOCUSSTUDY</span>
+              <span class="work-index">03 / FOCUSSTUDY</span>
               <h3 class="work-title" data-ar="FOCUS STUDY" data-en="FOCUS STUDY">FOCUS STUDY</h3>
               <p class="work-desc" data-ar="تطبيق دراسة وتركيز متكامل مع تقنية البومودورو، إدارة المهام، تمارين التنفس، موسيقى ثنائية الأذن، ومتاح على الويب، ويندوز، وأندرويد" data-en="Complete study & focus app with Pomodoro, task management, breathing exercises, binaural beats, available on web, Windows, and Android">
                 تطبيق دراسة وتركيز متكامل مع تقنية البومودورو، إدارة المهام، تمارين التنفس، موسيقى ثنائية الأذن، ومتاح على الويب، ويندوز، وأندرويد
@@ -1223,7 +1360,7 @@
               <img src="images/splitease.jpg" alt="SplitEase" width="1280" height="800" loading="lazy" decoding="async">
             </a>
             <div class="work-content">
-              <span class="work-index">03 / SPLITEASE</span>
+              <span class="work-index">04 / SPLITEASE</span>
               <h3 class="work-title" data-ar="SPLIT EASE" data-en="SPLIT EASE">SPLIT EASE</h3>
               <p class="work-desc" data-ar="تطبيق ذكي لتقسيم المصاريف بين الأصدقاء، مع مجموعات، رصيد، تسوية تلقائية، دردشة فورية، إشعارات Push، ومزامنة مباشرة" data-en="Smart expense splitting app for friends with groups, balances, auto-settlement, instant chat, push notifications, and real-time sync">
                 تطبيق ذكي لتقسيم المصاريف بين الأصدقاء، مع مجموعات، رصيد، تسوية تلقائية، دردشة فورية، إشعارات Push، ومزامنة مباشرة
@@ -1251,7 +1388,7 @@
               <img src="images/freelance.jpg" alt="Freelance Landing" width="1280" height="800" loading="lazy" decoding="async">
             </a>
             <div class="work-content">
-              <span class="work-index">04 / FREELANCE LANDING</span>
+              <span class="work-index">05 / FREELANCE LANDING</span>
               <h3 class="work-title" data-ar="FREELANCE HUB" data-en="FREELANCE HUB">FREELANCE HUB</h3>
               <p class="work-desc" data-ar="صفحة خدمات احترافية لعرض عروض العمل الحر، بوتات تيليجرام، الأتمتة، والمشاريع الكبيرة مع دعوة مباشرة للتواصل" data-en="Professional services landing page showcasing freelance offers, Telegram bots, automation, and large projects with direct contact CTA">
                 صفحة خدمات احترافية لعرض عروض العمل الحر، بوتات تيليجرام، الأتمتة، والمشاريع الكبيرة مع دعوة مباشرة للتواصل
@@ -1274,27 +1411,27 @@
             </div>
           </article>
           <article class="work-item">
-            <a class="work-preview" href="https://jamra.ibrheamshady.workers.dev" target="_blank" rel="noopener" aria-label="Jamrah">
-              <img src="images/jamrah.jpg" alt="Jamrah" width="1280" height="800" loading="lazy" decoding="async">
+            <a class="work-preview" href="https://beauty-zone-sepia.vercel.app" target="_blank" rel="noopener" aria-label="Beauty Zone">
+              <img src="images/beautyzone.jpg" alt="Beauty Zone" width="1280" height="800" loading="lazy" decoding="async">
             </a>
             <div class="work-content">
-              <span class="work-index">05 / JAMRAH</span>
-              <h3 class="work-title" data-ar="JAMRAH" data-en="JAMRAH">JAMRAH</h3>
-              <p class="work-desc" data-ar="موقع فريق التسويق الرقمي الحديث مع Next.js و Cloudflare Workers، تصميم عصري وتجربة مستخدم فريدة" data-en="Modern digital marketing team website with Next.js and Cloudflare Workers, modern design and unique UX">
-                موقع فريق التسويق الرقمي الحديث مع Next.js و Cloudflare Workers، تصميم عصري وتجربة مستخدم فريدة
+              <span class="work-index">06 / BEAUTY ZONE</span>
+              <h3 class="work-title" data-ar="BEAUTY ZONE" data-en="BEAUTY ZONE">BEAUTY ZONE</h3>
+              <p class="work-desc" data-ar="موقع صالون تجميلي عصري مع تصميم أنيق، حجز مواعيد، عرض خدمات، وتجربة مستخدم سلسة" data-en="Modern beauty salon website with elegant design, appointment booking, services showcase, and smooth UX">
+                موقع صالون تجميلي عصري مع تصميم أنيق، حجز مواعيد، عرض خدمات، وتجربة مستخدم سلسة
               </p>
               <div class="work-tags">
-                <span class="work-tag">Next.js</span>
-                <span class="work-tag">TypeScript</span>
-                <span class="work-tag">Cloudflare</span>
-                <span class="work-tag">Tailwind</span>
+                <span class="work-tag">HTML/CSS/JS</span>
+                <span class="work-tag">Vercel</span>
+                <span class="work-tag">Responsive</span>
+                <span class="work-tag">RTL</span>
               </div>
               <div class="work-links">
-                <a class="work-link" href="https://jamra.ibrheamshady.workers.dev" target="_blank">
+                <a class="work-link" href="https://beauty-zone-sepia.vercel.app" target="_blank">
                   <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
                   <i class="ti ti-arrow-up-right"></i>
                 </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/jamra" target="_blank">
+                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/beauty-zoon" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1306,7 +1443,7 @@
               <div class="work-panel"><i class="ti ti-brand-telegram"></i><span>Telegram Bot</span></div>
             </a>
             <div class="work-content">
-              <span class="work-index">06 / TELEGRAM ORDER BOT</span>
+              <span class="work-index">07 / TELEGRAM ORDER BOT</span>
               <h3 class="work-title" data-ar="TELEGRAM ORDER BOT" data-en="TELEGRAM ORDER BOT">TELEGRAM ORDER BOT</h3>
               <p class="work-desc" data-ar="بوت طلبات متكامل مع سلة مشتريات، تأكيد طلبات، إشعارات فورية للمسؤول، ولوحة تحكم للإدارة" data-en="Complete order bot with cart, order confirmation, instant admin notifications, and management dashboard">
                 بوت طلبات متكامل مع سلة مشتريات، تأكيد طلبات، إشعارات فورية للمسؤول، ولوحة تحكم للإدارة
@@ -1330,7 +1467,7 @@
               <div class="work-panel"><i class="ti ti-building-hospital"></i><span>Pharmacy System</span></div>
             </a>
             <div class="work-content">
-              <span class="work-index">07 / SALLAQ PHARMACY</span>
+              <span class="work-index">08 / SALLAQ PHARMACY</span>
               <h3 class="work-title" data-ar="SALLAQ PHARMACY" data-en="SALLAQ PHARMACY">SALLAQ PHARMACY</h3>
               <p class="work-desc" data-ar="نظام إدارة صيدلية شامل مع مخزون، مبيعات، وصفات، تقارير، وواجهة عربية RTL احترافية" data-en="Complete pharmacy management system with inventory, sales, prescriptions, reports, and professional Arabic RTL interface">
                 نظام إدارة صيدلية شامل مع مخزون، مبيعات، وصفات، تقارير، واجهة عربية RTL احترافية
@@ -1354,7 +1491,7 @@
               <div class="work-panel"><i class="ti ti-pill"></i><span>Pharmacy Website</span></div>
             </a>
             <div class="work-content">
-              <span class="work-index">08 / PHARMACY SITE</span>
+              <span class="work-index">09 / PHARMACY SITE</span>
               <h3 class="work-title" data-ar="PHARMACY SITE" data-en="PHARMACY SITE">PHARMACY SITE</h3>
               <p class="work-desc" data-ar="موقع صيدلية عصري مع عرض منتجات، طلب أونلاين، حجز أدوية، وتصميم نظيف وسريع" data-en="Modern pharmacy website with product display, online ordering, medicine reservation, clean and fast design">
                 موقع صيدلية عصري مع عرض منتجات، طلب أونلاين، حجز أدوية، وتصميم نظيف وسريع
@@ -1367,34 +1504,6 @@
               </div>
               <div class="work-links">
                 <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/pharmacy-site" target="_blank">
-                  <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
-                  <i class="ti ti-brand-github"></i>
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="work-item">
-            <a class="work-preview" href="https://beauty-zone-sepia.vercel.app" target="_blank" rel="noopener" aria-label="Beauty Zone">
-              <img src="images/beautyzone.jpg" alt="Beauty Zone" width="1280" height="800" loading="lazy" decoding="async">
-            </a>
-            <div class="work-content">
-              <span class="work-index">09 / BEAUTY ZONE</span>
-              <h3 class="work-title" data-ar="BEAUTY ZONE" data-en="BEAUTY ZONE">BEAUTY ZONE</h3>
-              <p class="work-desc" data-ar="موقع صالون تجميلي عصري مع تصميم أنيق، حجز مواعيد، عرض خدمات، وتجربة مستخدم سلسة" data-en="Modern beauty salon website with elegant design, appointment booking, services showcase, and smooth UX">
-                موقع صالون تجميلي عصري مع تصميم أنيق، حجز مواعيد، عرض خدمات، وتجربة مستخدم سلسة
-              </p>
-              <div class="work-tags">
-                <span class="work-tag">HTML/CSS/JS</span>
-                <span class="work-tag">Vercel</span>
-                <span class="work-tag">Responsive</span>
-                <span class="work-tag">RTL</span>
-              </div>
-              <div class="work-links">
-                <a class="work-link" href="https://beauty-zone-sepia.vercel.app" target="_blank">
-                  <span data-ar="عرض مباشر" data-en="Live Preview">عرض مباشر</span>
-                  <i class="ti ti-arrow-up-right"></i>
-                </a>
-                <a class="work-link" href="https://github.com/ibrheamkhalaf88-collab/beauty-zoon" target="_blank">
                   <span data-ar="كود المشروع" data-en="Source Code">كود المشروع</span>
                   <i class="ti ti-brand-github"></i>
                 </a>
@@ -1470,94 +1579,6 @@
       </div>
     </section>
 
-    <section class="section" id="services">
-      <div class="section-inner">
-        <div class="section-header">
-          <div class="section-kicker">
-            <span class="kicker-line"></span>
-            <span data-ar="SERVICES" data-en="SERVICES">SERVICES</span>
-            <span class="kicker-line"></span>
-          </div>
-          <div class="section-title">
-            <span data-ar="عروض" data-en="OFFERS">عروض</span>
-            <span class="gradient" data-ar="وخدمات" data-en="& SERVICES">وخدمات</span>
-          </div>
-          <p class="section-lead" data-ar="أسعار واضحة، جودة عالية، تسليم مرتب، واستشارة أولى مجانية" data-en="Clear pricing, high quality, organized delivery, and free initial consultation">
-            أسعار واضحة، جودة عالية، تسليم مرتب، واستشارة أولى مجانية
-          </p>
-        </div>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-card-inner">
-              <div>
-                <h3 class="service-title" data-ar="بوت طلبات تيليجرام" data-en="Telegram Order Bot">بوت طلبات تيليجرام</h3>
-                <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="متجر كامل داخل تيليجرام" data-en="Complete store inside Telegram">متجر كامل داخل تيليجرام</p>
-              </div>
-              <div class="service-price">$49 – $99</div>
-              <div class="service-list">
-                <span data-ar="• قائمة منتجات ذكية" data-en="• Smart product catalog">• قائمة منتجات ذكية</span>
-                <span data-ar="• سلة مشتريات وتأكيد الطلب" data-en="• Cart & order confirmation">• سلة مشتريات وتأكيد الطلب</span>
-                <span data-ar="• إشعارات فورية للمسؤول" data-en="• Instant admin notifications">• إشعارات فورية للمسؤول</span>
-                <span data-ar="• قاعدة بيانات كاملة" data-en="• Full database">• قاعدة بيانات كاملة</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-card-inner">
-              <div>
-                <h3 class="service-title" data-ar="أتمتة ذكية" data-en="Smart Automation">أتمتة ذكية</h3>
-                <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="وفر وقتك وأتمت أعمالك" data-en="Save time & automate your work">وفر وقتك وأتمت أعمالك</p>
-              </div>
-              <div class="service-price">$59 – $120</div>
-              <div class="service-list">
-                <span data-ar="• أتمتة المهام المتكررة" data-en="• Automate repetitive tasks">• أتمتة المهام المتكررة</span>
-                <span data-ar="• تقارير يومية تلقائية" data-en="• Auto daily reports">• تقارير يومية تلقائية</span>
-                <span data-ar="• ربط بين الخدمات" data-en="• Service integrations">• ربط بين الخدمات</span>
-                <span data-ar="• إشعارات ذكية" data-en="• Smart notifications">• إشعارات ذكية</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card">
-            <div class="service-card-inner">
-              <div>
-                <h3 class="service-title" data-ar="موقع احترافي / QR" data-en="Pro Website / QR">موقع احترافي / QR</h3>
-                <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="تعريف سريع وأنيق" data-en="Quick & elegant presentation">تعريف سريع وأنيق</p>
-              </div>
-              <div class="service-price">$19 – $49</div>
-              <div class="service-list">
-                <span data-ar="• صفحة تعريفية احترافية" data-en="• Professional landing page">• صفحة تعريفية احترافية</span>
-                <span data-ar="• قائمة QR عصرية" data-en="• Modern QR menu">• قائمة QR عصرية</span>
-                <span data-ar="• متجاوب مع جميع الأجهزة" data-en="• Responsive on all devices">• متجاوب مع جميع الأجهزة</span>
-                <span data-ar="• سريع وخفيف" data-en="• Fast & lightweight">• سريع وخفيف</span>
-              </div>
-            </div>
-          </article>
-          <article class="service-card large">
-            <div class="service-card-inner">
-              <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-                <div>
-                  <h3 class="service-title" data-ar="مشروع كبير (Backend + Server)" data-en="Large Project (Backend + Server)">مشروع كبير (Backend + Server)</h3>
-                  <p style="color: var(--text-secondary); margin-top: 6px;" data-ar="أنظمة متكاملة بقوة وأمان عاليين" data-en="Integrated systems with high power & security">أنظمة متكاملة بقوة وأمان عاليين</p>
-                </div>
-                <div class="service-price" data-ar="حسب الطلب" data-en="Custom Quote">حسب الطلب</div>
-              </div>
-              <div class="tag-grid">
-                <span class="tag" data-ar="Backend قوي" data-en="Strong Backend">Backend قوي</span>
-                <span class="tag" data-ar="قاعدة بيانات" data-en="Database">قاعدة بيانات</span>
-                <span class="tag" data-ar="أمان متقدم" data-en="Advanced Security">أمان متقدم</span>
-                <span class="tag" data-ar="API احترافي" data-en="Professional API">API احترافي</span>
-                <span class="tag" data-ar="لوحة أدمن" data-en="Admin Panel">لوحة أدمن</span>
-                <span class="tag" data-ar="تطبيق ويب/أندرويد" data-en="Web/Android App">تطبيق ويب/أندرويد</span>
-                <span class="tag" data-ar="فريق جاهز للتنفيذ" data-en="Team Ready">فريق جاهز للتنفيذ</span>
-              </div>
-              <p style="color: var(--text-secondary);" data-ar="مثل نظام GymOS، أنظمة صيدليات، أنظمة إدارة كاملة، أو أي مشروع طموح. السعر يُقدر بدقة بعد دراسة المتطلبات" data-en="Like GymOS, pharmacy systems, full management systems, or any ambitious project. Price estimated precisely after requirements analysis">
-                مثل نظام GymOS، أنظمة صيدليات، أنظمة إدارة كاملة، أو أي مشروع طموح. السعر يُقدر بدقة بعد دراسة المتطلبات
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
     <section class="section" id="about">
       <div class="section-inner">
@@ -1668,6 +1689,7 @@
           </p>
         </div>
         <div class="journey-timeline">
+          <div class="journey-progress" aria-hidden="true"></div>
           <article class="journey-card">
             <div class="journey-marker">
               <div class="journey-icon">
@@ -1925,27 +1947,221 @@
   </button>
 
   <script>
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const lenis = new Lenis({ lerp: 0.12, smoothWheel: !reduceMotion });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
+    document.fonts.load('16px tabler-icons').then(() => document.documentElement.classList.add('icons-ready'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches && !new URLSearchParams(location.search).has('motion');
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const lenis = new Lenis({ lerp: 0.12, smoothWheel: !reduceMotion, anchors: { offset: -72 } });
 
     gsap.registerPlugin(ScrollTrigger);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
 
-    if (!reduceMotion) {
-      gsap.utils.toArray('.work-item, .bento-card, .video-card, .service-card').forEach((item) => {
-        gsap.from(item, {
-          opacity: 0,
-          y: 20,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 92%',
-            once: true
+    function initHeroCanvas() {
+      const canvas = document.querySelector('.hero-canvas');
+      const hero = document.querySelector('.hero');
+      const ctx = canvas.getContext('2d');
+      const pointer = { x: -9999, y: -9999 };
+      let width = 0;
+      let height = 0;
+      let spacing = 34;
+      let visible = true;
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        width = hero.offsetWidth;
+        height = hero.offsetHeight;
+        spacing = width < 720 ? 44 : 34;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, width, height);
+        const t = time * 0.0006;
+        for (let x = spacing / 2; x < width; x += spacing) {
+          for (let y = spacing / 2; y < height; y += spacing) {
+            const wave = Math.sin(x * 0.006 + y * 0.009 - t * 2.4);
+            const crest = Math.pow(Math.max(0, wave), 6);
+            const dist = Math.hypot(x - pointer.x, y - pointer.y);
+            const near = Math.max(0, 1 - dist / 200);
+            const heat = Math.min(1, crest + near);
+            ctx.fillStyle = 'rgba(220, 168, 115, ' + (0.07 + heat * 0.72) + ')';
+            const size = 1.2 + heat * 1.6;
+            ctx.fillRect(x - size / 2, y - size / 2 - crest * 5, size, size);
           }
+        }
+      }
+
+      function loop(time) {
+        if (visible && !document.hidden) draw(time);
+        requestAnimationFrame(loop);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      if (reduceMotion) {
+        draw(1200);
+        return;
+      }
+      if (canHover) {
+        hero.addEventListener('pointermove', (e) => {
+          const r = hero.getBoundingClientRect();
+          pointer.x = e.clientX - r.left;
+          pointer.y = e.clientY - r.top;
+        });
+        hero.addEventListener('pointerleave', () => {
+          pointer.x = -9999;
+          pointer.y = -9999;
+        });
+      }
+      new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+      }).observe(hero);
+      requestAnimationFrame(loop);
+    }
+
+    function drawVectorNumbers(delay) {
+      document.querySelectorAll('.vnum text').forEach((text, i) => {
+        const target = Number(text.textContent);
+        const counter = { value: 0 };
+        gsap.set(text, { fillOpacity: 0, strokeDasharray: 420, strokeDashoffset: 420 });
+        text.textContent = '0';
+        gsap.timeline({ delay: delay + i * 0.2 })
+          .to(counter, {
+            value: target,
+            duration: 1.1,
+            ease: 'power2.out',
+            onUpdate: () => {
+              text.textContent = String(Math.round(counter.value));
+            }
+          })
+          .to(text, { strokeDashoffset: 0, duration: 1.5, ease: 'power2.inOut' }, 0)
+          .to(text, { fillOpacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.35');
+      });
+    }
+
+    function initHeroIntro() {
+      const lines = gsap.utils.toArray('.hero-title > div');
+      lines.forEach((line) => {
+        const label = line.textContent;
+        line.setAttribute('aria-label', label);
+        line.innerHTML = label.split('').map((c) => '<span class="char" aria-hidden="true">' + c + '</span>').join('');
+      });
+      gsap.timeline()
+        .from('.hero-title .char', { yPercent: 110, duration: 1.1, stagger: 0.035, ease: 'expo.out' })
+        .from('.hero-kicker, .hero-subtitle, .hero-lead, .hero-meta, .hero-actions', { opacity: 0, y: 18, duration: 0.7, stagger: 0.09, ease: 'power3.out' }, 0.35)
+        .from('.hero-visual, .scroll-cue', { opacity: 0, duration: 0.9, ease: 'power2.out' }, 0.6);
+      drawVectorNumbers(0.7);
+
+      gsap.to('.hero-inner', {
+        yPercent: -7,
+        opacity: 0.2,
+        ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+      });
+    }
+
+    function initMarquee() {
+      const track = document.querySelector('.marquee-track');
+      track.innerHTML += track.innerHTML;
+      const loop = gsap.to(track, { xPercent: -50, duration: 42, ease: 'none', repeat: -1 });
+      let settle;
+      ScrollTrigger.create({
+        trigger: '.marquee',
+        start: 'top bottom',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          const boost = Math.min(5, Math.abs(self.getVelocity()) / 350);
+          gsap.to(loop, { timeScale: (self.direction < 0 ? -1 : 1) * (1 + boost), duration: 0.25, overwrite: true });
+          clearTimeout(settle);
+          settle = setTimeout(() => gsap.to(loop, { timeScale: 1, duration: 0.8, overwrite: true }), 140);
+        }
+      });
+    }
+
+    function initSectionReveals() {
+      gsap.utils.toArray('.section-header').forEach((header) => {
+        gsap.from(header.querySelectorAll('.section-kicker, .section-title > span, .section-lead'), {
+          opacity: 0,
+          y: 28,
+          duration: 0.9,
+          stagger: 0.09,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: header, start: 'top 84%', once: true }
         });
       });
+
+      gsap.utils.toArray('.work-item').forEach((item) => {
+        gsap.fromTo(item.querySelector('.work-preview'),
+          { clipPath: 'inset(0 0 100% 0 round 14px)' },
+          {
+            clipPath: 'inset(0 0 0% 0 round 14px)',
+            duration: 1.1,
+            ease: 'power4.out',
+            clearProps: 'clipPath',
+            scrollTrigger: { trigger: item, start: 'top 86%', once: true }
+          });
+        gsap.from(item.querySelector('.work-content').children, {
+          opacity: 0,
+          y: 18,
+          duration: 0.7,
+          stagger: 0.06,
+          delay: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: item, start: 'top 86%', once: true }
+        });
+        const img = item.querySelector('img');
+        if (img) {
+          gsap.fromTo(img, { scale: 1.1, yPercent: -3 }, {
+            yPercent: 3,
+            ease: 'none',
+            scrollTrigger: { trigger: item, start: 'top bottom', end: 'bottom top', scrub: true }
+          });
+        }
+      });
+
+      const batched = '.bento-card, .video-card, .journey-card, .contact-card, .contact-link';
+      gsap.set(batched, { opacity: 0, y: 24 });
+      ScrollTrigger.batch(batched, {
+        start: 'top 94%',
+        once: true,
+        onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 0.7, stagger: 0.07, ease: 'power3.out' })
+      });
+
+      gsap.fromTo('.journey-progress', { scaleY: 0 }, {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: { trigger: '.journey-timeline', start: 'top 70%', end: 'bottom 70%', scrub: true }
+      });
+    }
+
+    function initMagnetic() {
+      if (!canHover) return;
+      document.querySelectorAll('.btn, .cta-link').forEach((el) => {
+        el.addEventListener('mousemove', (e) => {
+          const r = el.getBoundingClientRect();
+          gsap.to(el, { x: (e.clientX - r.left - r.width / 2) * 0.22, y: (e.clientY - r.top - r.height / 2) * 0.32, duration: 0.3 });
+        });
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.45)' });
+        });
+      });
+    }
+
+    initHeroCanvas();
+    if (!reduceMotion) {
+      initHeroIntro();
+      initMarquee();
+      initSectionReveals();
+      initMagnetic();
+      gsap.to('.scroll-progress', {
+        scaleX: 1,
+        ease: 'none',
+        scrollTrigger: { start: 0, end: 'max', scrub: true }
+      });
+      document.fonts.ready.then(() => ScrollTrigger.refresh());
     }
 
     const navAnchors = document.querySelectorAll('.nav-links a, .mobile-menu a');
@@ -1957,7 +2173,7 @@
     }, { rootMargin: '-40% 0px -55% 0px' });
     document.querySelectorAll('main section[id]').forEach((s) => sectionObserver.observe(s));
 
-    const backToTop = document.getElementById('backToTop');
+const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
         backToTop.classList.add('visible');
